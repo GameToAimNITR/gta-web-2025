@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import HeroSection from '@/components/sections/hero';
 import AboutSection from '@/components/sections/about';
@@ -11,6 +11,7 @@ import GamesSection from '@/components/sections/games';
 import ShowcaseSection from '@/components/sections/showcase';
 import HackerOverlay from '@/components/hacker-overlay';
 import { useAnimation } from '@/context/animation-context';
+import { useLenis } from '@studio-freight/react-lenis';
 
 const BioIDTerminal = dynamic(() => import('@/components/bio-id-terminal'), {
   ssr: false,
@@ -19,6 +20,12 @@ const BioIDTerminal = dynamic(() => import('@/components/bio-id-terminal'), {
 export default function Home() {
   const { sequenceComplete } = useAnimation();
   const [isClient, setIsClient] = useState(false);
+  const sectionsRef = useRef<HTMLElement[]>([]);
+  const isScrolling = useRef(false);
+  const isDiving = useRef(false);
+  const enableScroll = useRef(false);
+  const [currentSection, setCurrentSection] = useState(0);
+  const lenis = useLenis();
 
   useEffect(() => {
     setIsClient(true);
