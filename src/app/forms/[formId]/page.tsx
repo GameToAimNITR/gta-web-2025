@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState, useFormStatus } from 'react';
 import { useEffect, useRef } from 'react';
 import { forms, type FormField as FormFieldType } from '@/lib/forms-data';
 import { submitForm, type FormState } from '@/app/actions';
@@ -102,7 +103,7 @@ export default function FormPage() {
   const form = forms.find(f => f.id === formId);
 
   const initialState: FormState = { message: '', status: 'idle' };
-  const [state, formAction] = useFormState(submitForm, initialState);
+  const [state, formAction] = useActionState(submitForm, initialState);
 
   useEffect(() => {
     if (state.status === 'success') {
