@@ -1,3 +1,4 @@
+
 export const ItemTypes = {
   TEXT: 'text',
   TEXTAREA: 'textarea',
@@ -34,6 +35,12 @@ export interface Form {
     fields: FormField[];
 }
 
+export interface FormSubmission {
+    formId: string;
+    submittedAt: Date;
+    data: Record<string, string | boolean>;
+}
+
 // Mock data for created forms
 export const forms: Form[] = [
     {
@@ -58,4 +65,28 @@ export const forms: Form[] = [
             { id: 'subscribe', type: 'checkbox', label: 'Subscribe to our newsletter for updates.' },
         ]
     }
+];
+
+// Mock data for form submissions
+export const submissions: FormSubmission[] = [
+    {
+        formId: 'event-signup-123',
+        submittedAt: new Date('2024-05-01T10:00:00Z'),
+        data: { name: 'Alice', email: 'alice@example.com', attendance: 'Yes', interests: 'Programming' }
+    },
+    {
+        formId: 'event-signup-123',
+        submittedAt: new Date('2024-05-01T11:30:00Z'),
+        data: { name: 'Bob', email: 'bob@example.com', attendance: 'Yes', interests: 'Art & Animation' }
+    },
+    {
+        formId: 'feedback-form-456',
+        submittedAt: new Date('2024-05-02T14:00:00Z'),
+        data: { player_name: 'Charlie', rating: '5 - Excellent', feedback: 'Loved the art style!', subscribe: true }
+    },
+     {
+        formId: 'event-signup-123',
+        submittedAt: new Date('2024-05-02T15:00:00Z'),
+        data: { name: 'David', email: 'david@example.com', attendance: 'No', interests: 'Sound & Music' }
+    },
 ];

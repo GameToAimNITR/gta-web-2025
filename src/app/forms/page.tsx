@@ -1,10 +1,11 @@
+
 'use client';
 
 import { forms } from '@/lib/forms-data';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileText, ArrowRight } from 'lucide-react';
+import { FileText, ArrowRight, Table } from 'lucide-react';
 
 export default function FormsListPage() {
   return (
@@ -19,7 +20,7 @@ export default function FormsListPage() {
       {forms.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {forms.map(form => (
-            <Card key={form.id} className="group border-primary/20 hover:border-primary transition-all duration-300 hover:box-glow-primary">
+            <Card key={form.id} className="group border-primary/20 hover:border-primary transition-all duration-300 hover:box-glow-primary flex flex-col">
               <CardHeader>
                 <div className="flex items-start justify-between">
                     <CardTitle className="text-2xl font-bold group-hover:text-accent transition-colors">{form.title}</CardTitle>
@@ -27,10 +28,15 @@ export default function FormsListPage() {
                 </div>
                 <CardDescription>{form.description}</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="mt-auto flex flex-col gap-2">
                 <Button asChild variant="outline" className="w-full group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
                   <Link href={`/forms/${form.id}`}>
                     Open Form <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="secondary" className="w-full">
+                  <Link href={`/form-builder/responses/${form.id}`}>
+                    View Responses <Table className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
               </CardContent>
