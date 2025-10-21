@@ -14,7 +14,6 @@ export const models: ModelInfo[] = [
     id: 'cyber-cube',
     name: 'Cyber-Cube MK.II',
     description: 'A fundamental data block, pulsating with raw information.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'box',
         color: '#00ffff', // cyan
@@ -24,7 +23,6 @@ export const models: ModelInfo[] = [
     id: 'data-sphere',
     name: 'Data-Sphere',
     description: 'A compressed node of archived knowledge, smooth and seamless.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'sphere',
         color: '#f0f', // magenta
@@ -34,7 +32,6 @@ export const models: ModelInfo[] = [
     id: 'protocol-torus',
     name: 'Protocol-Torus',
     description: 'A looping communication protocol, representing continuous data flow.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'torus',
         color: '#00ff00', // lime green
@@ -44,7 +41,6 @@ export const models: ModelInfo[] = [
     id: 'engine-block',
     name: 'Fusion Engine',
     description: 'The power core for a standard city-cruiser vehicle.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'box',
         color: '#ff9900',
@@ -54,7 +50,6 @@ export const models: ModelInfo[] = [
     id: 'hover-drone',
     name: 'Scout Drone',
     description: 'An agile surveillance drone used for reconnaissance missions.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'sphere',
         color: '#cccccc',
@@ -64,7 +59,6 @@ export const models: ModelInfo[] = [
     id: 'comms-array',
     name: 'Comms Array',
     description: 'A long-range communication dish for interplanetary transmissions.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'torus',
         color: '#ffcc00',
@@ -74,7 +68,6 @@ export const models: ModelInfo[] = [
     id: 'crystal-shard',
     name: 'Aetherium Crystal',
     description: 'A rare crystal that resonates with cosmic energy.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'box',
         color: '#BE29EC',
@@ -84,7 +77,6 @@ export const models: ModelInfo[] = [
     id: 'mech-helmet',
     name: 'Titan Helmet',
     description: 'The reinforced helmet of a Titan-class combat mech.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'sphere',
         color: '#a0a0a0',
@@ -94,7 +86,6 @@ export const models: ModelInfo[] = [
     id: 'plasma-rifle',
     name: 'Plasma Rifle',
     description: 'Standard issue energy weapon for corporate enforcers.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'box',
         color: '#f44336',
@@ -104,7 +95,6 @@ export const models: ModelInfo[] = [
     id: 'orbital-station',
     name: 'Orbital Station',
     description: 'A habitat module for low-orbit space stations.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'torus',
         color: '#e0e0e0',
@@ -114,7 +104,6 @@ export const models: ModelInfo[] = [
     id: 'sword-of-ancients',
     name: 'Sword of Ancients',
     description: 'A blade forged in a forgotten era, humming with power.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'box',
         color: '#4dd0e1',
@@ -124,7 +113,6 @@ export const models: ModelInfo[] = [
     id: 'cyber-heart',
     name: 'Cybernetic Heart',
     description: 'An advanced biomechanical replacement organ.',
-    url: 'https://res.cloudinary.com/dsse5djcy/image/upload/v1752249454/xbot_okfpxc.glb',
     fallback: {
         geometry: 'sphere',
         color: '#ff4081',
