@@ -23,7 +23,7 @@ export default function FormBuilderPage() {
     <DndProvider backend={HTML5Backend}>
       <div className="flex flex-col h-full">
         <h1 className="text-3xl font-bold mb-6 text-glow-primary">Create New Form</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-grow">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-grow items-start">
           <div className="lg:col-span-2">
             <FormCanvas />
           </div>
