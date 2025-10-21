@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -65,7 +66,7 @@ export default function DroppedField({ field, onUpdate, onRemove }: DroppedField
             </div>
              <div>
                 <Label htmlFor={`placeholder-${field.id}`}>Placeholder</Label>
-                <Input id={`placeholder-${field.id}`} value={editableField.placeholder} onChange={e => setEditableField({...editableField, placeholder: e.target.value})} />
+                <Input id={`placeholder-${field.id}`} value={editableField.placeholder || ''} onChange={e => setEditableField({...editableField, placeholder: e.target.value})} />
             </div>
             <div className="flex items-center space-x-2">
                 <Switch id={`required-${field.id}`} checked={editableField.required} onCheckedChange={checked => setEditableField({...editableField, required: checked})} />
