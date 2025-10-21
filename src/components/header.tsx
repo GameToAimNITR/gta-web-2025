@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -13,6 +14,7 @@ import {
 import {
   Menu,
   Gamepad2,
+  Brain,
   Info,
   Joystick,
   Component,
@@ -50,7 +52,6 @@ export default function Header() {
   const [activeLink, setActiveLink] = useState('');
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const isNavigatingRef = useRef(false);
-  // const timeoutRef = useRef<NodeJS.Timeout>();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lenis = useLenis();
   const navRef = useRef<HTMLElement>(null);
@@ -181,8 +182,13 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 cyber-header animate-entry animate-slide-in-top is-visible">
       <div className="container flex h-16 items-center">
         <div className="mr-8 flex items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <Gamepad2 className="h-6 w-6 text-primary" />
+          <Link href="/" className="flex items-center space-x-4">
+            <Image
+              src="/GTALogo.svg"
+              alt="GTA Logo"
+              width={40}
+              height={40}
+            />
             <span className="font-bold text-lg tracking-wider">
               GAME TO AIM
             </span>

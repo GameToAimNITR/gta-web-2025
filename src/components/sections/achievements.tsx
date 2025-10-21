@@ -53,7 +53,7 @@ export default function AchievementsSection() {
             </p>
           </div>
         </div>
-        
+
         <div className="relative mt-16">
           <motion.div ref={carouselRef} style={{ x }} className="flex gap-8 pl-16">
             {achievements.map((achievement, index) => (
