@@ -47,7 +47,7 @@ export const games: Game[] = [
       'The world is collapsing, and you must decide who deserves to escape on the last ship.',
     longDescription:
       'The world is on the brink of collapse, but the company you work for, GENSIS, has secured a coveted position on the last escape ship—GENESIS. But there’s a catch: before you can board, you must spend three days determining who else deserves a spot, or lose yours too. Armed with the S.C.A.L.E. system (Schematic Chart for Analysis of all Living Entities), your task is to scrutinize potential passengers, verify IDs, analyze health metrics, and cross-check their data. Every decision shapes humanity’s fate—and your own.',
-    image: placeholderImages.games.projectExodus,
+    image: '/games/projectExodus.png',
     aiHint: 'sci-fi moral decision spaceship',
     techStack: ['Unity', 'Blender', 'Krita', 'Audacity'],
     developers: ['Aditya Rout'],
@@ -58,7 +58,7 @@ export const games: Game[] = [
       'Survive waves of evil shapes out to destroy you in this short action game.',
     longDescription:
       'A short little game made in about a week. The evil shapes are after you and they won’t stop until you’re dead. How many of them can you take out before your impending DOOM?',
-    image: placeholderImages.games.iCaThNa,
+    image: '/games/iCaThNa.png',
     aiHint: 'minimal shooter geometric enemies',
     techStack: ['Unity', 'Krita', 'Audacity'],
     developers: ['Aditya Rout'],
@@ -69,7 +69,7 @@ export const games: Game[] = [
       'Help Square rush through a magical house to make it to his teleportation class on time.',
     longDescription:
       'Square did it again! Oversleeping is his specialty, but being late for his magic class? That’s a whole other story. Today’s lesson is teleportation! Navigate through tricky passages and puzzles using magical skills like Time Reversal and Gravity Switching to make it to class—before detention with Mr. Pentagon!',
-    image: placeholderImages.games.lateAgain,
+    image: '/games/lateAgain.png',
     aiHint: 'magic puzzle time reversal gravity',
     techStack: ['Unity', 'Krita', 'Audacity'],
     developers: ['Aditya Rout', 'Bidyendu Das'],
@@ -80,7 +80,7 @@ export const games: Game[] = [
       'Defend a cursed Gothic village from nightly monster attacks and uncover its dark secrets.',
     longDescription:
       'You arrive in a mysterious European Gothic village under siege by monsters every night. The terrified villagers refuse to shelter you. Seeking answers, you meet Maria, who reveals the tragic curse behind it all. Fight off waves of skeletons and uncover the chilling truth before dawn.',
-    image: placeholderImages.games.duskBorn,
+    image: '/games/duskBorn.png',
     aiHint: 'gothic horror village night monsters',
     techStack: ['Unity'],
     developers: ['Aditya Rout', 'Bidyendu Das', 'Sumit Kumar Sahu', 'Shivom Arpan Behera'],
@@ -90,7 +90,7 @@ export const games: Game[] = [
     description: 'LUDO meets turn-based combat!',
     longDescription:
       'Battle Board combines the casual fun of LUDO with the strategic depth of turn-based combat. Plan your moves, outwit your opponents, and battle your way to victory on a dynamic board of chaos.',
-    image: placeholderImages.games.battleBoard,
+    image: '/games/battleBoard.png',
     aiHint: 'board game combat ludo strategy',
     techStack: ['Unity', 'Blender', 'Krita'],
     developers: [
