@@ -2,8 +2,17 @@
   "games": {
     "campusSurvivalVR": "https://picsum.photos/seed/cs_vr/400/300",
     "campusQuestVR": "https://picsum.photos/seed/cq_vr/400/300",
-    "neonRush": "https://picsum.photos/seed/neon_rush/400/300"
+    "neonRush": "https://picsum.photos/seed/neon_rush/400/300",
+
+    "projectExodus": "https://ibb.co/8LbGpnrM",
+    "iCaThNa": "https://ibb.co/Jj7XfhmW",
+    "lateAgain": "https://ibb.co/1tRDCPym",
+    "duskBorn": "https://ibb.co/HDTW0cT4",
+    "battleBoard": "https://ibb.co/jXTV2zT",
+    "nullZone": "https://img.itch.zone/aW1hZ2UvMzcyOTcxNS8yMzcyMzcxNy5wbmc=/original/w9FTJS.png",
+    "illusions": "https://img.itch.zone/aW1hZ2UvMzMyOTA0OS8xOTg4NTE0Ni5wbmc=/original/QpHElA.png"
   },
+
   "achievements": {
     "codeJamChampion": "https://picsum.photos/seed/ach1/600/400",
     "unrealVirtuoso": "https://picsum.photos/seed/ach2/600/400",
@@ -12,6 +21,7 @@
     "vrPioneer": "https://picsum.photos/seed/ach5/600/400",
     "bugSquasher": "https://picsum.photos/seed/ach6/600/400"
   },
+
   "members": {
     "default": "https://picsum.photos/seed/member/400/400"
   }
