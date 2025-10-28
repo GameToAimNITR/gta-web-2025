@@ -15,4 +15,5 @@ export const rudranshPandey: Member = {
   specialAbility: 'Passion Driver',
   bio: 'Ambitious gamer with a passion for games and cars, taking steady steps into game development. Driven to turn my passion into reality.',
   githubUrl: '#',
+  linkedinUrl: '#',
 };

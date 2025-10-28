@@ -15,4 +15,5 @@ export const samirKumarMallick: Member = {
   specialAbility: 'Motivated Growth',
   bio: 'I am a curious and driven individual, always eager to learn. Challenges motivate me to grow and improve every day. I believe in honesty, hard work, and staying grounded. Creativity and problem-solving are my strong suits. I strive to make a positive impact wherever I go.',
   githubUrl: '#',
+  linkedinUrl: '#',
 };

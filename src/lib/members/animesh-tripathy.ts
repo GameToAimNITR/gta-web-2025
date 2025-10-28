@@ -15,4 +15,5 @@ export const animeshTripathy: Member = {
   specialAbility: 'Juice Master',
   bio: 'Loves making 2D pixel themed games. Experienced in Raylib and Godot. Really into making good game mechanics and juicing up games with a bit of spaghetti code :)',
   githubUrl: '#',
+  linkedinUrl: '#',
 };

@@ -15,4 +15,5 @@ export const glitch: Member = {
   specialAbility: 'Instant Debug',
   bio: 'Can write flawless code in their sleep and debug with their eyes closed. Rumored to communicate directly with computers via psychic link.',
   githubUrl: '#',
+  linkedinUrl: '#',
 };

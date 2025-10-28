@@ -15,4 +15,5 @@ export const cipher: Member = {
   specialAbility: 'System Architect',
   bio: 'The mastermind behind the fun. Designs the intricate systems and compelling gameplay loops that make our games addictive and unforgettable.',
   githubUrl: '#',
+  linkedinUrl: '#',
 };
