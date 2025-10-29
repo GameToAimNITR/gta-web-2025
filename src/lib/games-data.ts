@@ -32,16 +32,6 @@ export const games: Game[] = [
     developers: ['Vesper', 'Cipher'],
   },
   {
-    title: 'NeonRush',
-    description: 'Advanced physics-based racer with dynamic visuals.',
-    longDescription:
-      'Advanced force-based physics with damage, dynamic LOD environments, and intense neon conditions via custom bloom and volumetric lighting. A high-speed, high-stakes racing experience.',
-    image: placeholderImages.games.neonRush,
-    aiHint: 'neon city car',
-    techStack: ['Unreal Engine', 'C++', 'Niagara', 'Houdini'],
-    developers: ['Glitch', 'Byte', 'Shard'],
-  },
-  {
     title: 'Project Exodus',
     description:
       'The world is collapsing, and you must decide who deserves to escape on the last ship.',
