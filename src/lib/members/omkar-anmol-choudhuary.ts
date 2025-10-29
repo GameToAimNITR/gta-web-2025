@@ -15,4 +15,5 @@ export const omkarAnmolChoudhuary: Member = {
   specialAbility: 'Silent Focus',
   bio: "I’m Omkar Anmol Choudhary, currently pursuing Electrical Engineering and really into coding. I’m a gamer at heart and love playing badminton. I am an introvert, and and my favourite thing is spending time with my favorite companion my laptop.",
   githubUrl: '#',
+  linkedinUrl: '#',
 };

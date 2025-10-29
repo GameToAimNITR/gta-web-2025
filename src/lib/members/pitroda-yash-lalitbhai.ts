@@ -15,4 +15,5 @@ export const pitrodaYashLalitbhai: Member = {
   specialAbility: 'Versatile Learner',
   bio: 'Myself Yash from code and 3d team.I am from cse branch 2nd year. Participated in mini code for cause jam. Learning basic game dev and ui/ux design.',
   githubUrl: '#',
+  linkedinUrl: '#',
 };

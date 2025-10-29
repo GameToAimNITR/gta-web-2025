@@ -15,4 +15,5 @@ export const sagarSarangi: Member = {
   specialAbility: 'Intelligent Systems',
   bio: "Hey, I'm Sagar and I'm a developer who started with web and is now exploring game development. I enjoy building projects that are both visually polished and technically solid. Lately, I've been working with AI to make experiences feel more intelligent and interactive. My interest in math and analytics helps me think through structure and problem-solving. All of it ties into creating systems that are fun, functional, and well thought out.",
   githubUrl: '#',
+  linkedinUrl: '#',
 };

@@ -1,16 +1,24 @@
 {
   "games": {
-    "campusSurvivalVR": "https://picsum.photos/seed/cs_vr/400/300",
-    "campusQuestVR": "https://picsum.photos/seed/cq_vr/400/300",
-    "neonRush": "https://picsum.photos/seed/neon_rush/400/300",
-
-    "projectExodus": "https://ibb.co/8LbGpnrM",
-    "iCaThNa": "https://ibb.co/Jj7XfhmW",
-    "lateAgain": "https://ibb.co/1tRDCPym",
-    "duskBorn": "https://ibb.co/HDTW0cT4",
-    "battleBoard": "https://ibb.co/jXTV2zT",
-    "nullZone": "https://img.itch.zone/aW1hZ2UvMzcyOTcxNS8yMzcyMzcxNy5wbmc=/original/w9FTJS.png",
-    "illusions": "https://img.itch.zone/aW1hZ2UvMzMyOTA0OS8xOTg4NTE0Ni5wbmc=/original/QpHElA.png"
+    "campusSurvivalVR": "/games/campusSurvivalVR.png",
+    "campusQuestVR": "/games/campusQuestVR.png",
+    "projectExodus": "/games/projectExodus.png",
+    "iCaThNa": "/games/iCaThNa.png",
+    "lateAgain": "/games/lateAgain.png",
+    "duskBorn": "/games/duskBorn.png",
+    "battleBoard": "/games/battleBoard.png",
+    "nullZone": "/games/nullZone.png",
+    "illusions": "/games/illusions.png",
+    "setAblaze": "/games/setAblaze.png",
+    "redOrbit": "/games/redOrbit.png",
+    "medAid": "/games/medAid.png",
+    "aurat": "/games/aurat.png",
+    "ecoBuilder": "/games/ecoBuilder.png",
+    "chronoWarfare": "/games/chronoWarfare.jpg",
+    "onTime": "/games/onTime.png",
+    "depthLostIntoTheAbyss": "/games/depthLostIntoTheAbyss.jpg",
+    "fatman": "/games/fatman.jpg",
+    "undeadHavoc": "/games/undeadHavoc.png"
   },
 
   "achievements": {

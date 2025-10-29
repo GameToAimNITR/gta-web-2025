@@ -21,6 +21,7 @@ import {
   Trophy,
   Users,
   Send,
+  FileText,
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
@@ -35,6 +36,7 @@ interface NavLink {
   label: string;
   // Icon: ElementType;
   Icon: ComponentType<{ className?: string }>;
+  isExternal?: boolean;
 }
 
 const navLinks: NavLink[] = [
@@ -44,6 +46,7 @@ const navLinks: NavLink[] = [
   { href: '/#achievements', label: 'Achievements', Icon: Trophy },
   { href: '/#contact', label: 'Contact', Icon: Send },
   { href: '/#member-access', label: 'Members', Icon: Users },
+  { href: '/form-builder', label: 'Form Builder', Icon: FileText },
 ];
 
 export default function Header() {
@@ -120,18 +123,10 @@ export default function Header() {
     };
   }, [pathname, lenis]);
 
-  const handleNavLinkClick = (e: React.MouseEvent, href: string) => {
+  const handleNavLinkClick = (e: React.MouseEvent, href: string, isExternal = false) => {
     if (isSheetOpen) setIsSheetOpen(false);
 
-    if (href === '/#member-access' && pathname.startsWith('/members')) {
-        e.preventDefault();
-        router.push('/');
-        // The rest of the logic for scrolling will be handled by the main page
-        return;
-    }
-
-    // if (href.startsWith('/#') && pathname === '/') {
-    if (href.startsWith('/#') && pathname === '/' && href !== '/#member-access') {
+    if (href.startsWith('/#') && pathname === '/') {
       e.preventDefault();
       document.body.classList.add('is-nav-scrolling');
       setTimeout(() => document.body.classList.remove('is-nav-scrolling'), 800);
@@ -151,27 +146,29 @@ export default function Header() {
 
       // Immediately set active link on click for better responsiveness
       setActiveLink(href);
+    } else if (!isExternal) {
+        // Normal Next.js navigation for other internal pages
+        router.push(href);
     }
   };
 
-  const NavLinkComponent = ({ href, label, Icon, isMobile = false }: NavLink & { isMobile?: boolean }) => {
-    const isActive = activeLink === href;
-    const isMemberLinkOnMemberPage = pathname === '/members' && href === '/#member-access';
-    const finalIsActive = isActive || isMemberLinkOnMemberPage;
+  const NavLinkComponent = ({ href, label, Icon, isMobile = false, isExternal = false }: NavLink & { isMobile?: boolean }) => {
+    const isActive = pathname.startsWith(href) && href !== '/';
+    const isHomepageHashLink = activeLink === href && pathname === '/';
+    const finalIsActive = isActive || isHomepageHashLink;
 
-    const linkHref = href === '/#member-access' ? '/members' : href;
-
+    const linkProps = {
+      "data-href": href,
+      onClick: (e: React.MouseEvent) => handleNavLinkClick(e, href, isExternal),
+      className: cn(
+        isMobile ? 'flex items-center gap-3 text-lg font-semibold' : 'cyber-nav-link',
+        finalIsActive && !isMobile && 'text-primary-foreground'
+      ),
+      ...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })
+    };
 
     return (
-      <Link
-        href={linkHref}
-        data-href={href}
-        onClick={(e) => handleNavLinkClick(e, href)}
-        className={cn(
-          isMobile ? 'flex items-center gap-3 text-lg font-semibold' : 'cyber-nav-link',
-          finalIsActive && !isMobile && 'text-primary-foreground'
-        )}
-      >
+      <Link href={href} {...linkProps}>
         <Icon className={cn("h-4 w-4 transition-colors group-hover:text-primary", finalIsActive ? 'text-primary-foreground' : 'text-muted-foreground')} />
         <span className="nav-link-text">{label}</span>
       </Link>

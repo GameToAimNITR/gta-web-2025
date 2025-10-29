@@ -14,6 +14,7 @@ export const models: ModelInfo[] = [
     id: 'cyber-cube',
     name: 'Cyber-Cube MK.II',
     description: 'A fundamental data block, pulsating with raw information.',
+    url:"https://res.cloudinary.com/dmcx4mfns/image/upload/v1761476604/FireBoss_zgipch.glb",
     fallback: {
         geometry: 'box',
         color: '#00ffff', // cyan

@@ -15,4 +15,5 @@ export const shubhamPrakash: Member = {
   specialAbility: 'Eager Learner',
   bio: "Hi, I’m Shubham Prakash, a first-year student in the Chemical Engineering branch. I’ve always been passionate about anime and gaming, which led me to join this gaming club. I’m excited to learn more about game mechanics, explore different software tools, and gain hands-on experience through various projects.",
   githubUrl: '#',
+  linkedinUrl: '#',
 };

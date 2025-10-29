@@ -15,4 +15,5 @@ export const byte: Member = {
   specialAbility: 'Data Weaver',
   bio: 'The silent guardian of the server room. Ensures our game data flows smoothly and securely across the network.',
   githubUrl: '#',
+  linkedinUrl: '#',
 };

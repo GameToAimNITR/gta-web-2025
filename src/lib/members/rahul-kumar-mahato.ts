@@ -15,4 +15,5 @@ export const rahulKumarMahato: Member = {
   specialAbility: 'Idea to Reality',
   bio: 'A game developer and coder who thrives on turning bold ideas into reality. I love blending creativity with logic, passionate about creating immersive games and believe in smart work.',
   githubUrl: '#',
+  linkedinUrl: '#',
 };
