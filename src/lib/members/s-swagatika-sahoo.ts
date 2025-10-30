@@ -5,7 +5,7 @@ export const sSwagatikaSahoo: Member = {
   name: 'S SWAGATIKA SAHOO',
   role: '3D',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Subham_Swagatika_Sahoo.jpg',
   aiHint: 'digital art animation',
   skills: [
     { name: 'Problem Solving', level: 88 },

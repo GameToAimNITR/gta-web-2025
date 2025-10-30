@@ -5,7 +5,7 @@ export const prayasBharadwaj: Member = {
   name: 'Prayas Bharadwaj',
   role: '3D',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Prayas_Bharadwaj.jpg',
   aiHint: 'curious storm',
   skills: [
     { name: 'Depth Seeking', level: 95 },

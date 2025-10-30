@@ -5,7 +5,7 @@ export const mohitRanjanNaik: Member = {
   name: 'Mohit Ranjan Naik',
   role: '3D',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Mohit.jpg',
   aiHint: 'art code',
   skills: [
     { name: '3D Modeling', level: 88 },

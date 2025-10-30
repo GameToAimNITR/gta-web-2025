@@ -5,7 +5,7 @@ export const pitrodaYashLalitbhai: Member = {
   name: 'Pitroda Yash Lalitbhai',
   role: 'Code',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Yash_Pitroda.jpg',
   aiHint: 'game dev ui',
   skills: [
     { name: 'Game Dev Basics', level: 80 },

@@ -5,7 +5,7 @@ export const chinmayVijayKumar: Member = {
   name: 'Chinmay Vijay Kumar',
   role: 'Code',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Chinmay_Vk.jpg',
   aiHint: 'developer code',
   skills: [
     { name: 'Unity 2D', level: 85 },

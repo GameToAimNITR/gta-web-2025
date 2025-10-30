@@ -5,7 +5,7 @@ export const rahulKumarMahato: Member = {
   name: 'Rahul Kumar Mahato',
   role: '3D',
   year: 2027,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Rahul_Kumar_Mahato.jpg',
   aiHint: 'creative logic',
   skills: [
     { name: 'Game Development', level: 90 },

@@ -5,7 +5,7 @@ export const dikeshBhuarya: Member = {
   name: 'Dikesh Bhuarya',
   role: 'Code',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Dikesh_Bhuarya.jpg',
   aiHint: 'gamer tech',
   skills: [
     { name: 'PC Gaming', level: 90 },

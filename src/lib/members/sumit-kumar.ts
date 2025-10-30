@@ -5,7 +5,7 @@ export const sumitKumar: Member = {
   name: 'Sumit kumar',
   role: 'Code',
   year: 2026,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Sumit_Kumar_Sahu.jpg',
   aiHint: 'game developer',
   skills: [
     { name: 'Unity', level: 92 },

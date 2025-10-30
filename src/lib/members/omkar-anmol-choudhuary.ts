@@ -5,7 +5,7 @@ export const omkarAnmolChoudhuary: Member = {
   name: 'Omkar Anmol choudhuary',
   role: 'Code',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/omkar_Choudhuary.jpg',
   aiHint: 'coding laptop',
   skills: [
     { name: 'Coding', level: 90 },

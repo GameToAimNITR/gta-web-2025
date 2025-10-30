@@ -5,7 +5,7 @@ export const shaktiPrasadSahoo: Member = {
   name: 'Shakti prasad Sahoo',
   role: '3D',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Shakti.jpg',
   aiHint: 'traditional future',
   skills: [
     { name: 'Learning', level: 88 },

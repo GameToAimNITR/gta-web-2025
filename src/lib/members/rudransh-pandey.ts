@@ -5,7 +5,7 @@ export const rudranshPandey: Member = {
   name: 'Rudransh Pandey',
   role: 'Code',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Rudransh_Pandey.jpg',
   aiHint: 'gamer car',
   skills: [
     { name: 'Gaming', level: 92 },

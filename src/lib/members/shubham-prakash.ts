@@ -5,7 +5,7 @@ export const shubhamPrakash: Member = {
   name: 'Shubham prakash',
   role: '3D',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Shubham_Prakash.jpg',
   aiHint: 'anime gaming',
   skills: [
     { name: 'Game Mechanics', level: 80 },

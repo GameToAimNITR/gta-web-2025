@@ -5,7 +5,7 @@ export const anshumanBehera: Member = {
   name: 'Anshuman Behera',
   role: 'Code',
   year: 2028,
-  image: 'https://placehold.co/400x400.png',
+  image: '/members/Anshuman_behera.jpg',
   aiHint: 'game world',
   skills: [
     { name: 'Unity', level: 88 },
