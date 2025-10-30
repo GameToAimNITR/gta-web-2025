@@ -6,117 +6,81 @@ export interface ModelInfo {
   fallback: {
     geometry: 'box' | 'sphere' | 'torus';
     color: string;
-  }
+  };
 }
 
 export const models: ModelInfo[] = [
   {
-    id: 'cyber-cube',
-    name: 'Cyber-Cube MK.II',
-    description: 'A fundamental data block, pulsating with raw information.',
-    url:"https://res.cloudinary.com/dmcx4mfns/image/upload/v1761476604/FireBoss_zgipch.glb",
+    id: 'christmas-tree',
+    name: 'Christmas Tree',
+    description: 'A low poly Christmas tree for those who like it lowwww.',
+    url: 'https://res.cloudinary.com/dwwvl1ysj/image/upload/v1761742799/Cloudinary%203D/models/GTAChristmas_r1k0nn.glb',
     fallback: {
-        geometry: 'box',
-        color: '#00ffff', // cyan
-    }
+      geometry: 'sphere',
+      color: '#2ecc71', // green
+    },
   },
   {
-    id: 'data-sphere',
-    name: 'Data-Sphere',
-    description: 'A compressed node of archived knowledge, smooth and seamless.',
+    id: 'construction-crane',
+    name: 'Construction Crane',
+    description: 'A detailed 3D construction crane capturing industrial strength and structure.',
+    url: 'https://res.cloudinary.com/dwwvl1ysj/image/upload/v1761743081/Cloudinary%203D/models/Crane_kazsj4.glb',
     fallback: {
-        geometry: 'sphere',
-        color: '#f0f', // magenta
-    }
+      geometry: 'torus',
+      color: '#f1c40f', // yellow
+    },
   },
   {
-    id: 'protocol-torus',
-    name: 'Protocol-Torus',
-    description: 'A looping communication protocol, representing continuous data flow.',
+    id: 'modern-building',
+    name: 'Modern Building',
+    description: 'A sleek, contemporary architectural structure symbolizing urban innovation.',
+    url: '',
     fallback: {
-        geometry: 'torus',
-        color: '#00ff00', // lime green
-    }
+      geometry: 'box',
+      color: '#95a5a6', // gray
+    },
   },
   {
-    id: 'engine-block',
-    name: 'Fusion Engine',
-    description: 'The power core for a standard city-cruiser vehicle.',
+    id: 'the-auric-whisper',
+    name: 'The Auric Whisper',
+    description:
+      'Forged in the heart of a golden dawn, The Auric Whisper is a rapier of elegance and precision. Its hilt, crafted from molten copper and coiled with gilded threads, symbolizes nobility and discipline. The blade — long, slender, and perfectly balanced — glows faintly under light, as though whispering the secrets of every duel it has seen.',
+    url: '',
     fallback: {
-        geometry: 'box',
-        color: '#ff9900',
-    }
+      geometry: 'box',
+      color: '#FFD700', // gold
+    },
   },
   {
-    id: 'hover-drone',
-    name: 'Scout Drone',
-    description: 'An agile surveillance drone used for reconnaissance missions.',
+    id: 'stand-by-me-doraemon',
+    name: 'Stand by me Doraemon!',
+    description: 'A wave to childhood nostalgia!',
+    url: 'https://res.cloudinary.com/dwwvl1ysj/image/upload/v1761743473/Cloudinary%203D/optimizations/rsf8fl151ejzi5zd8geo.glb',
     fallback: {
-        geometry: 'sphere',
-        color: '#cccccc',
-    }
+      geometry: 'sphere',
+      color: '#00aaff', // blue
+    },
   },
   {
-    id: 'comms-array',
-    name: 'Comms Array',
-    description: 'A long-range communication dish for interplanetary transmissions.',
+    id: 'study-table',
+    name: 'Study Table',
+    description:
+      'This 3D model represents a cozy and minimal study setup designed to feel calm and realistic. The warm lighting, simple wooden desk, and soft chair create a space that feels inviting and focused. Small details like the glowing desk lamp, indoor plant, and wall art add a personal touch, bringing life and balance to the scene. The goal was to capture the simplicity of a real workspace while keeping it visually clean and comfortable.',
+    url: '',
     fallback: {
-        geometry: 'torus',
-        color: '#ffcc00',
-    }
+      geometry: 'box',
+      color: '#deb887', // light brown
+    },
   },
   {
-    id: 'crystal-shard',
-    name: 'Aetherium Crystal',
-    description: 'A rare crystal that resonates with cosmic energy.',
+    id: 'dustfall-outpost',
+    name: 'The Dustfall Outpost',
+    description:
+      'In this 3D scene, I wanted to capture a quiet, futuristic alley that feels both real and slightly unreal. I focused on the lighting and mood—soft neon reflections, faint glows, and textures that tell a story without words. The space felt more peaceful and open, allowing the light and atmosphere to take the spotlight. My goal was to make the viewer pause for a second, as if standing in that still, glowing moment between reality and imagination.',
+    url: '',
     fallback: {
-        geometry: 'box',
-        color: '#BE29EC',
-    }
+      geometry: 'torus',
+      color: '#9b59b6', // purple
+    },
   },
-  {
-    id: 'mech-helmet',
-    name: 'Titan Helmet',
-    description: 'The reinforced helmet of a Titan-class combat mech.',
-    fallback: {
-        geometry: 'sphere',
-        color: '#a0a0a0',
-    }
-  },
-  {
-    id: 'plasma-rifle',
-    name: 'Plasma Rifle',
-    description: 'Standard issue energy weapon for corporate enforcers.',
-    fallback: {
-        geometry: 'box',
-        color: '#f44336',
-    }
-  },
-  {
-    id: 'orbital-station',
-    name: 'Orbital Station',
-    description: 'A habitat module for low-orbit space stations.',
-    fallback: {
-        geometry: 'torus',
-        color: '#e0e0e0',
-    }
-  },
-  {
-    id: 'sword-of-ancients',
-    name: 'Sword of Ancients',
-    description: 'A blade forged in a forgotten era, humming with power.',
-    fallback: {
-        geometry: 'box',
-        color: '#4dd0e1',
-    }
-  },
-  {
-    id: 'cyber-heart',
-    name: 'Cybernetic Heart',
-    description: 'An advanced biomechanical replacement organ.',
-    fallback: {
-        geometry: 'sphere',
-        color: '#ff4081',
-    }
-  }
 ];
