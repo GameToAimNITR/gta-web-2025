@@ -13,7 +13,7 @@ export const pitrodaYashLalitbhai: Member = {
     { name: '3D', level: 78 },
   ],
   specialAbility: 'Versatile Learner',
-  bio: 'Myself Yash from code and 3d team.I am from cse branch 2nd year. Participated in mini code for cause jam. Learning basic game dev and ui/ux design.',
+  bio: 'Hi, I’m Yash ,I build for the websites where logic meets experience.I also explore the world of game development, blending code with creativity to craft moments that feel alive',
   githubUrl: '#',
   linkedinUrl: '#',
 };
