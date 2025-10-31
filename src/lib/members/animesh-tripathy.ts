@@ -5,7 +5,7 @@ export const animeshTripathy: Member = {
   name: 'Animesh Tripathy',
   role: 'Code',
   year: 2028,
-  image: '/members/animesh-tripathy.png',
+  image: '/members/Animesh_Tripathy.jpg',
   aiHint: 'pixel art code',
   skills: [
     { name: 'Raylib', level: 85 },

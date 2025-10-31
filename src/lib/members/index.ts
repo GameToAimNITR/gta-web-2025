@@ -58,14 +58,19 @@ export const members: Member[] = [
   const roleOrder = [
     'President',
     'Vice President',
-    'Faculty Advisor',
-    'Lead Programmer',
-    'Lead 3D Artist',
-    'Lead Game Designer',
-    'Lead Writer',
-    'Code',
-    '3D',
+    'Secretary',
+    'Treasurer',
+    'Code Head',
+    '3D Head',
+    'Design Head',
+    'Content PR head',
+    'Content PR head',
+    'Code Team',
+    '3D Team',
+    'Game and Design Team/Design Team',
     'Web Dev',
+    'Content and PR Team',
+    'Video Editing Team'
   ];
   const aIndex = roleOrder.indexOf(a.role);
   const bIndex = roleOrder.indexOf(b.role);

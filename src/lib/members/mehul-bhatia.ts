@@ -5,7 +5,7 @@ export const mehulBhatia: Member = {
   name: 'Mehul Bhatia',
   role: '3D',
   year: 2028,
-  image: '/mermbers/Mehul_Bhatia.jpg',
+  image: '/members/Mehul_Bhatia.jpg',
   aiHint: '3d world gaming',
   skills: [
     { name: '3D Art', level: 85 },

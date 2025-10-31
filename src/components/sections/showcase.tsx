@@ -8,7 +8,7 @@ import type { ModelInfo } from '@/lib/modelInfo';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
-import { Code, Circle, Donut, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Code, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const ModelViewer = dynamic(() => import('@/components/model-viewer'), {
   loading: () => <Skeleton className="w-full h-[500px] rounded-lg border-2 border-primary/30 bg-card box-glow-primary" />,
@@ -41,10 +41,6 @@ export default function ShowcaseSection() {
     switch (geometry) {
       case 'box':
         return <Code className="w-5 h-5" />;
-      case 'sphere':
-        return <Circle className="w-5 h-5" />;
-      case 'torus':
-        return <Donut className="w-5 h-5" />;
       default:
         return <Code className="w-5 h-5" />;
     }
