@@ -5,7 +5,7 @@
 import { useParams } from 'next/navigation';
 import { useActionState } from 'react';
 import { useEffect, useRef, useMemo } from 'react';
-import { forms, type FormField as FormFieldType } from '@/lib/forms-data';
+import { forms, type FormField as FormFieldType, ItemTypes } from '@/lib/forms-data';
 import { submitForm, type FormState } from '@/app/actions';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,30 +22,30 @@ import { useFormStatus } from 'react-dom';
 
 function RenderField({ field }: { field: FormFieldType }) {
   switch (field.type) {
-    case 'text':
-    case 'email':
-    case 'tel':
+    case ItemTypes.TEXT:
+    case ItemTypes.EMAIL:
+    case ItemTypes.TEL:
       return (
         <div className="space-y-2">
           <Label htmlFor={field.id}>{field.label}</Label>
           <Input id={field.id} name={field.id} type={field.type} placeholder={field.placeholder} required={field.required} />
         </div>
       );
-    case 'textarea':
+    case ItemTypes.TEXTAREA:
       return (
         <div className="space-y-2">
           <Label htmlFor={field.id}>{field.label}</Label>
           <Textarea id={field.id} name={field.id} placeholder={field.placeholder} required={field.required} />
         </div>
       );
-    case 'checkbox':
+    case ItemTypes.CHECKBOX:
       return (
         <div className="flex items-center space-x-2">
           <Checkbox id={field.id} name={field.id} />
           <Label htmlFor={field.id}>{field.label}</Label>
         </div>
       );
-    case 'radio':
+    case ItemTypes.RADIO:
       return (
         <div className="space-y-2">
           <Label>{field.label}</Label>
@@ -59,7 +59,7 @@ function RenderField({ field }: { field: FormFieldType }) {
           </RadioGroup>
         </div>
       );
-    case 'select':
+    case ItemTypes.SELECT:
         return (
             <div className="space-y-2">
                 <Label htmlFor={field.id}>{field.label}</Label>
