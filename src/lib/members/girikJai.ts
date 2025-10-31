@@ -5,7 +5,7 @@ export const girikJai: Member = {
   name: 'Girik Jai',
   role: 'Code Team, Content and PR Team',
   year: 2026,
-  image: '/members/Girik_jai.jpg',
+  image: '/members/Girik_Jai.jpg',
   aiHint: 'strategic communicator coder',
   skills: [
     { name: 'JavaScript', level: 83 },

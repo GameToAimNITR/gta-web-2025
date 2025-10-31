@@ -5,7 +5,7 @@ export const adityaArunav: Member = {
   name: 'Aditya Arunav',
   role: 'Code, Game and Design Team',
   year: 2026,
-  image: 'https://picsum.photos/seed/28/400/400',
+  image: '/members/Aditya_Arunav.png',
   aiHint: 'secretary developer designer',
   skills: [
     { name: 'Game Development', level: 90 },
