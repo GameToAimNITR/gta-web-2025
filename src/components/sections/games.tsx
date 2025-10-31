@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Users, Code, Gamepad2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { useLenis } from '@studio-freight/react-lenis';
 
 export default function GamesSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,6 +25,7 @@ export default function GamesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,6 +57,14 @@ export default function GamesSection() {
     setSelectedGame(game);
     setIsDialogOpen(true);
   };
+
+  useEffect(() => {
+    if (isDialogOpen) {
+      lenis?.stop();
+    } else {
+      lenis?.start();
+    }
+  }, [isDialogOpen, lenis]);
 
   return (
     <>
@@ -137,17 +147,18 @@ export default function GamesSection() {
                 </div>
                 
                 <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-2">
-                  {selectedGame.playUrl && selectedGame.playUrl !== '#' && (
+                  {selectedGame.playUrl && selectedGame.playUrl !== '#' ? (
                     <Button asChild className="w-full">
                       <Link href={selectedGame.playUrl} target="_blank" rel="noopener noreferrer">
                         <Gamepad2 className="mr-2 h-4 w-4" />
                         Play Game
                       </Link>
                     </Button>
-                  )}
-                   <Button variant="secondary" onClick={() => setIsDialogOpen(false)} className="w-full">
+                  ) : (
+                    <Button variant="secondary" onClick={() => setIsDialogOpen(false)} className="w-full">
                       Close
                     </Button>
+                  )}
                 </div>
               </div>
             </>
