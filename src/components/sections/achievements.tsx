@@ -49,7 +49,7 @@ export default function AchievementsSection() {
               Hall of Fame
             </h2>
             <p className="mt-4 font-code text-lg text-foreground/80 max-w-3xl mx-auto">
-            &gt; Achievements unlocked! Here’s where our XP, trophies, and epic moments live on.
+            Achievements unlocked! Here’s where our XP, trophies, and epic moments live on.
             </p>
           </div>
         </div>

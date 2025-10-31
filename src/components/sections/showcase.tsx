@@ -52,8 +52,7 @@ export default function ShowcaseSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-glow-accent">3D Asset Showcase</h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Decompile and inspect the core constructs of our digital universe. Interact with the building blocks of our games.
-          </p>
+          Disassemble. Discover. Decode. These are the core assets powering our digital realms.          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
