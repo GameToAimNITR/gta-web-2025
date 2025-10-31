@@ -20,7 +20,7 @@ export const games: Game[] = [
       image: placeholderImages.games.campusSurvivalVR,
       aiHint: 'zombie apocalypse campus',
       techStack: ['Unity', 'C#', 'Oculus SDK', 'Blender'],
-      developers: ['Jax', 'Glitch', 'Vertex'],
+      developers: ['GTA-2024'],
       playUrl: '#',
     },
     {
@@ -31,7 +31,7 @@ export const games: Game[] = [
       image: placeholderImages.games.campusQuestVR,
       aiHint: 'treasure map campus',
       techStack: ['Unity', 'C#', 'SteamVR', 'Figma'],
-      developers: ['Vesper', 'Cipher'],
+      developers: ['GTA-2023'],
       playUrl: '#',
     },
     {
