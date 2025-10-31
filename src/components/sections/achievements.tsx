@@ -48,8 +48,8 @@ export default function AchievementsSection() {
             <h2 className="text-4xl md:text-5xl font-bold text-glow-accent tracking-wider uppercase">
               Hall of Fame
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-              At <span className="text-primary font-bold">GAME TO AIM</span>, our projects are our pride. The work we do ranges from games and applications to interactive experiences. The most recent achievements are listed below.
+            <p className="mt-4 font-code text-lg text-foreground/80 max-w-3xl mx-auto">
+            &gt; Achievements unlocked! Here’s where our XP, trophies, and epic moments live on.
             </p>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function AchievementsSection() {
         <div className="relative mt-16">
           <motion.div ref={carouselRef} style={{ x }} className="flex gap-8 pl-16">
             {achievements.map((achievement, index) => (
-               <div key={index} className="group relative h-[350px] w-[280px] md:h-[400px] md:w-[320px] flex-shrink-0">
+               <div key={achievement.title} className="group relative h-[350px] w-[280px] md:h-[400px] md:w-[320px] flex-shrink-0">
                  <div className="cyber-card-container h-full w-full">
                    <div className="cyber-card-content flex flex-col bg-opacity-70">
                     <div className="relative w-full h-48 cyber-card-shimmer" style={{ clipPath: 'polygon(0 20px, 20px 0, 100% 0, 100% 100%, 0 100%)' }}>
