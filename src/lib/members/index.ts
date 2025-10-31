@@ -1,5 +1,6 @@
 import type { Member, Year } from './types';
 
+import { adityaArunav } from './adityaArunav';
 import { adityaRout } from './adityaRout';
 import { animeshTripathy } from './animesh-tripathy';
 import { anshumanBehera } from './anshuman-behera';
@@ -27,6 +28,7 @@ import { sivanshuSurya } from './sivanshuSurya';
 import { sumitKumarSahu } from './sumitKumarSahu';
 
 export const members: Member[] = [
+  adityaArunav,
   adityaRout,
   animeshTripathy,
   anshumanBehera,
@@ -72,8 +74,9 @@ export const members: Member[] = [
     'Content and PR Team',
     'Video Editing Team'
   ];
-  const aIndex = roleOrder.indexOf(a.role);
-  const bIndex = roleOrder.indexOf(b.role);
+  const aIndex = roleOrder.findIndex(role => a.role.includes(role));
+  const bIndex = roleOrder.findIndex(role => b.role.includes(role));
+
   if (aIndex !== -1 && bIndex !== -1 && aIndex !== bIndex) return aIndex - bIndex;
 
   // Finally, alphabetically by name
