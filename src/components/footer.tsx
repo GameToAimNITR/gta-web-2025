@@ -1,23 +1,14 @@
 import Link from 'next/link';
-import { Gamepad2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
     <footer className="border-t border-border/40 relative z-10">
       <div className="container flex flex-col items-center justify-center gap-4 py-10 md:h-24 md:flex-row md:py-0">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-          <Gamepad2 className="h-6 w-6 text-primary" />
+        <Image src="/GTALogo.svg" alt="Game To Aim Logo" width={24} height={24} className="h-6 w-6 object-contain"/>
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            Built by{' '}
-            <a
-              href="https://gta.nitt.edu"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4 hover:text-primary tracking-wider"
-            >
-              GAME TO AIM
-            </a>
-            . The game development club of NIT Rourkela.
+            Spawned by GAME TO AIM — NIT Rourkela’s official guild of game creators.
           </p>
         </div>
       </div>

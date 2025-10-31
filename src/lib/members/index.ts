@@ -68,7 +68,7 @@ export const members: Member[] = [
     'Code Team',
     '3D Team',
     'Game and Design Team/Design Team',
-    'Web Dev',
+    'Web Dev Team',
     'Content and PR Team',
     'Video Editing Team'
   ];

@@ -10,9 +10,9 @@ import Cybertype from '@/components/cybertype';
 export default function HeroSection() {
   const buttons = ['games', 'showcase', 'join'] as const;
   type SelectedButton = (typeof buttons)[number];
-  
+
   const [selectedButton, setSelectedButton] = useState<SelectedButton>('games');
-  
+
   const lenis = useLenis();
 
   const handleNavigation = (targetId: string) => {
@@ -41,7 +41,7 @@ export default function HeroSection() {
         muted
         playsInline
         className="absolute z-0 w-full h-full object-cover"
-        src="/gta_final.webm"
+        src="/gta_intro.webm"
       />
       <div className="absolute inset-0 bg-black/50 z-0"></div>
       <div className="z-10 flex flex-col items-center p-4">
@@ -70,7 +70,7 @@ export default function HeroSection() {
         >
           <div className="flex flex-col sm:flex-row items-center gap-8">
             {buttonData.map((btn, index) => (
-              <div 
+              <div
                 key={btn.id}
                 className={cn('animate-entry is-visible',
                   index === 0 ? 'animate-slide-in-left' : index === 1 ? 'animate-fade-in' : 'animate-slide-in-right'
@@ -95,7 +95,7 @@ export default function HeroSection() {
               </div>
             ))}
           </div>
-          <div 
+          <div
             className={'animate-entry animate-fade-in is-visible'}
             style={{ animationDelay: '500ms' }}
           >

@@ -3,7 +3,7 @@ import type { Member } from './types';
 export const shivomArpanBehera: Member = {
   id: 17,
   name: 'Shivom Arpan Behera',
-  role: 'Code Team, Content and PR Team',
+  role: 'Content and PR Head',
   year: 2027,
   image: '/members/Shivom_Arpan_Behera.png',
   aiHint: 'content strategist coder',
