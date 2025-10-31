@@ -1,7 +1,7 @@
 import type { Member } from './types';
 
 export const adityaRout: Member = {
-  id: 1,
+  id: 2,
   name: 'Aditya Rout',
   role: 'Code Head',
   year: 2027,
@@ -13,7 +13,7 @@ export const adityaRout: Member = {
     { name: 'Team Leadership', level: 89 },
   ],
   specialAbility: 'Enigma',
-  bio: 'As a Code Team member, Aditya transforms ideas and mechanics into reality through elegant code. As the Code Head, he guides juniors to grow their technical and creative capabilities, ensuring every line of code builds toward engaging and polished gameplay experiences.',
+  bio: 'As a Code Team m/members/Aditya_Rout.jpegember, Aditya transforms ideas and mechanics into reality through elegant code. As the Code Head, he guides juniors to grow their technical and creative capabilities, ensuring every line of code builds toward engaging and polished gameplay experiences.',
   githubUrl: 'https://github.com/freshBakedPie314',
   linkedinUrl: 'https://www.linkedin.com/in/adityarout2005',
 };

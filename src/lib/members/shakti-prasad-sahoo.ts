@@ -1,7 +1,7 @@
 import type { Member } from './types';
 
 export const shaktiPrasadSahoo: Member = {
-  id: 21,
+  id: 22,
   name: 'Shakti prasad Sahoo',
   role: '3D Team',
   year: 2028,
