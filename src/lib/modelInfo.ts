@@ -1,3 +1,4 @@
+
 export interface ModelInfo {
   id: string;
   name: string;
@@ -34,7 +35,7 @@ export const models: ModelInfo[] = [
     id: 'modern-building',
     name: 'Modern Building',
     description: 'A sleek, contemporary architectural structure symbolizing urban innovation.',
-    url: 'https://skfb.ly/pCQnL',
+    url: 'https://res.cloudinary.com/dwwvl1ysj/image/upload/v1761743081/Cloudinary%203D/models/Crane_kazsj4.glb',
     fallback: {
       geometry: 'box',
       color: '#95a5a6', // gray
