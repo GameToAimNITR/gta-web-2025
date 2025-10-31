@@ -1,7 +1,11 @@
 import type { Member } from './types';
 
 export const sumitKumarSahu: Member = {
+<<<<<<< HEAD
   id: 7,
+=======
+  id: 25,
+>>>>>>> e5a152e (Correct the logic fault in in the member's page. The first entry duplica)
   name: 'Sumit Kumar Sahu',
   role: 'Vice President',
   year: 2027,

@@ -46,7 +46,7 @@ export default function MemberCard({ member, index }: MemberCardProps) {
           </div>
 
           <div className="text-center bg-card/50 p-3 rounded-md border border-border">
-            <p className="text-sm uppercase tracking-widest text-muted-foreground">Special Ability</p>
+            <p className="text-sm uppercase tracking-widest text-muted-foreground">Avatar Name</p>
             <p className="font-semibold text-lg text-foreground mt-1">{`"${member.specialAbility}"`}</p>
           </div>
 
