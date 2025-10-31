@@ -3,7 +3,7 @@ import type { Member } from './types';
 export const rudranshPandey: Member = {
   id: 11,
   name: 'Rudransh Pandey',
-  role: 'Code',
+  role: 'Code Team',
   year: 2028,
   image: '/members/Rudransh_Pandey.jpg',
   aiHint: 'gamer car',

@@ -3,7 +3,7 @@ import type { Member } from './types';
 export const mehulBhatia: Member = {
   id: 17,
   name: 'Mehul Bhatia',
-  role: '3D',
+  role: '3D Team',
   year: 2028,
   image: '/members/Mehul_Bhatia.jpg',
   aiHint: '3d world gaming',
