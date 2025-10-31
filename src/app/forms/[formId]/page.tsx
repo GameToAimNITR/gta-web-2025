@@ -1,9 +1,10 @@
 
+
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useActionState, useFormStatus } from 'react';
-import { useEffect, useRef } from 'react';
+import { useActionState } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { forms, type FormField as FormFieldType } from '@/lib/forms-data';
 import { submitForm, type FormState } from '@/app/actions';
 
@@ -17,6 +18,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { useFormStatus } from 'react-dom';
 
 function RenderField({ field }: { field: FormFieldType }) {
   switch (field.type) {
@@ -47,7 +49,7 @@ function RenderField({ field }: { field: FormFieldType }) {
       return (
         <div className="space-y-2">
           <Label>{field.label}</Label>
-          <RadioGroup id={field.id} name={field.id}>
+          <RadioGroup name={field.id} required={field.required}>
             {field.options?.map(option => (
               <div key={option} className="flex items-center space-x-2">
                 <RadioGroupItem value={option} id={`${field.id}-${option}`} />
@@ -61,7 +63,7 @@ function RenderField({ field }: { field: FormFieldType }) {
         return (
             <div className="space-y-2">
                 <Label htmlFor={field.id}>{field.label}</Label>
-                <Select name={field.id}>
+                <Select name={field.id} required={field.required}>
                     <SelectTrigger id={field.id}>
                         <SelectValue placeholder={field.placeholder} />
                     </SelectTrigger>
@@ -100,7 +102,7 @@ export default function FormPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const { toast } = useToast();
 
-  const form = forms.find(f => f.id === formId);
+  const form = useMemo(() => forms.find(f => f.id === formId), [formId]);
 
   const initialState: FormState = { message: '', status: 'idle' };
   const [state, formAction] = useActionState(submitForm, initialState);
