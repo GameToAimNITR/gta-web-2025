@@ -14,8 +14,9 @@ import {
 } from '@/components/ui/dialog';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Users, Code, Wand2 } from 'lucide-react';
+import { Users, Code, Gamepad2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 export default function GamesSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -135,8 +136,16 @@ export default function GamesSection() {
                   </div>
                 </div>
                 
-                <div className="mt-auto pt-4">
-                   <Button onClick={() => setIsDialogOpen(false)} className="w-full">
+                <div className="mt-auto pt-4 flex flex-col sm:flex-row gap-2">
+                  {selectedGame.playUrl && selectedGame.playUrl !== '#' && (
+                    <Button asChild className="w-full">
+                      <Link href={selectedGame.playUrl} target="_blank" rel="noopener noreferrer">
+                        <Gamepad2 className="mr-2 h-4 w-4" />
+                        Play Game
+                      </Link>
+                    </Button>
+                  )}
+                   <Button variant="secondary" onClick={() => setIsDialogOpen(false)} className="w-full">
                       Close
                     </Button>
                 </div>
