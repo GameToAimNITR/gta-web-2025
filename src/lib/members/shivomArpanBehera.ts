@@ -1,0 +1,19 @@
+import type { Member } from './types';
+
+export const shivomArpanBehera: Member = {
+  id: 17,
+  name: 'Shivom Arpan Behera',
+  role: 'Code Team, Content and PR Team',
+  year: 2027,
+  image: '/members/Shivom_Arpan_Behera.png',
+  aiHint: 'content strategist coder',
+  skills: [
+    { name: 'Content Strategy', level: 87 },
+    { name: 'Game Development', level: 82 },
+    { name: 'Public Relations', level: 83 },
+  ],
+  specialAbility: 'Arpan',
+  bio: 'Balancing creativity and communication, he contributes to both the technical and public-facing aspects of GTA. As a Content and PR Head, ensures clear messaging while supporting game projects through code.',
+  githubUrl: 'https://github.com/Sage07713',
+  linkedinUrl: 'https://github.com/Sage07713',
+};
