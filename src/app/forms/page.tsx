@@ -1,13 +1,16 @@
 
 'use client';
 
-import { forms } from '@/lib/forms-data';
+import { useState } from 'react';
+import { forms as initialForms } from '@/lib/forms-data';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { FileText, ArrowRight, Table } from 'lucide-react';
 
 export default function FormsListPage() {
+  const [forms, setForms] = useState(initialForms);
+
   return (
     <div className="container mx-auto py-12">
       <div className="text-center mb-12">
