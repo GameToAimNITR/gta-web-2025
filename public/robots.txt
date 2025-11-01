@@ -5,4 +5,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://game-to-aim-cyber.web.app/sitemap.xml
+Sitemap: https://gametoaim.live/sitemap.xml

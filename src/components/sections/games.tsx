@@ -74,9 +74,9 @@ export default function GamesSection() {
         className="min-h-screen w-full flex flex-col items-center justify-center p-4 md:p-8 parallax-section overflow-hidden"
       >
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-glow-accent">Game Archives</h2>
+          <h1 className="text-4xl md:text-5xl font-bold text-glow-accent">Game Archives</h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Browse our complete library of digital worlds. Hover over any project to see the details.
+            Browse our complete library of student-made games. Hover over any project to see the details.
           </p>
         </div>
 

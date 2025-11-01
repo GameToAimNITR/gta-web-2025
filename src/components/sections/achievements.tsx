@@ -50,8 +50,13 @@ export default function AchievementsSection() {
     "image": `https://game-to-aim-cyber.web.app${achievement.image}`,
     "organizer": {
       "@type": "Organization",
-      "name": "Game To Aim",
+      "name": "Game To Aim NIT Rourkela",
       "url": "https://game-to-aim-cyber.web.app"
+    },
+    "location": {
+        "@type": "Place",
+        "name": "National Institute of Technology, Rourkela",
+        "address": "NIT Rourkela, Rourkela, Odisha, India"
     }
   }));
 

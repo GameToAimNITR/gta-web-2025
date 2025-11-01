@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(url),
   title: {
     default: title,
-    template: `%s | Game To Aim`,
+    template: `%s | Game To Aim - NIT Rourkela`,
   },
   description: description,
   keywords: [
@@ -44,6 +44,8 @@ export const metadata: Metadata = {
     'Unity',
     'Unreal Engine',
     'VR Development',
+    'NIT Rourkela game development',
+    'National Institute of Technology Rourkela',
   ],
   openGraph: {
     title: title,
@@ -55,7 +57,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Game To Aim Club Banner',
+        alt: 'Game To Aim Club Banner - NIT Rourkela Game Development',
       },
     ],
     locale: 'en_US',

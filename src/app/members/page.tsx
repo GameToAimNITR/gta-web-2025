@@ -10,20 +10,25 @@ import type { Year } from '@/lib/members/types';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 
-
-export const metadata: Metadata = {
-    title: 'Meet the Team',
-    description: 'Meet the talented developers, artists, and designers of Game To Aim. See the students behind NIT Rourkela’s most innovative gaming projects.',
-    alternates: {
-        canonical: '/members',
-    },
-};
+// This metadata is not used because the page is client-rendered.
+// For SEO, this should be a server component or use generateMetadata.
+// export const metadata: Metadata = {
+//     title: 'Meet the Team',
+//     description: 'Meet the talented developers, artists, and designers of Game To Aim. See the students behind NIT Rourkela’s most innovative gaming projects.',
+//     alternates: {
+//         canonical: '/members',
+//     },
+// };
 
 export default function MembersPage() {
   const [activeFilter, setActiveFilter] = useState<Year | 'All'>('All');
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const lenis = useLenis();
+
+  useEffect(() => {
+    document.title = 'Meet the Team | Game To Aim - NIT Rourkela';
+  }, []);
 
   useEffect(() => {
     // Scroll to top on page load
@@ -65,7 +70,7 @@ export default function MembersPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold">Meet the Team</h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            The architects of our worlds. A collective of creators, thinkers, and innovators pushing the boundaries of gaming.
+            The architects of our worlds. Meet the developers, artists, and designers of Game To Aim, the game development club of NIT Rourkela.
           </p>
         </div>
 

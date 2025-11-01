@@ -83,4 +83,3 @@ export const achievements: Achievement[] = [
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
   },
 ];
-
