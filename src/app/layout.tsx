@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Orbitron, VT323 } from 'next/font/google';
 import './globals.css';
 import { RootProviders } from '@/components/root-providers';
+import { Analytics } from '@vercel/analytics/react';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -100,6 +101,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${orbitron.variable} ${vt323.variable} dark`}>
       <body className="font-body antialiased">
         <RootProviders>{children}</RootProviders>
+        <Analytics />
       </body>
     </html>
   );
