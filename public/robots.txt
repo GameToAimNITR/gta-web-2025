@@ -1,0 +1,8 @@
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+# To allow all crawlers to view all pages, so that the page can be indexed, use
+# the following code:
+User-agent: *
+Allow: /
+
+Sitemap: https://game-to-aim-cyber.web.app/sitemap.xml

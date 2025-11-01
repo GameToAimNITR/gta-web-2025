@@ -10,12 +10,14 @@ import HackerOverlay from '@/components/hacker-overlay';
 import { useAnimation } from '@/context/animation-context';
 import BioIDTerminal from '@/components/bio-id-terminal';
 import ShowcaseSection from '@/components/sections/showcase';
+import OrganizationSchema from '@/components/page-specific/organization-schema';
 
 export default function Home() {
   const { sequenceComplete } = useAnimation();
 
   return (
     <>
+      <OrganizationSchema />
       {!sequenceComplete && <HackerOverlay />}
       <HeroSection />
       <AboutSection />

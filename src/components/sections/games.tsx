@@ -106,7 +106,7 @@ export default function GamesSection() {
               <div className="relative aspect-video md:aspect-auto">
                 <Image
                   src={selectedGame.image}
-                  alt={selectedGame.title}
+                  alt={`Gameplay screenshot of ${selectedGame.title}`}
                   fill
                   className="object-cover rounded-l-lg"
                   data-ai-hint={selectedGame.aiHint}
@@ -121,9 +121,9 @@ export default function GamesSection() {
                 </DialogHeader>
 
                 <div>
-                  <h4 className="font-semibold text-lg flex items-center gap-2 mb-2 text-accent">
+                  <h3 className="font-semibold text-lg flex items-center gap-2 mb-2 text-accent">
                     <Code /> Tech Stack
-                  </h4>
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedGame.techStack.map((tech) => (
                       <Badge key={tech} variant="secondary" className="bg-secondary/50 text-secondary-foreground border-border">
@@ -134,9 +134,9 @@ export default function GamesSection() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-lg flex items-center gap-2 mb-2 text-accent">
+                  <h3 className="font-semibold text-lg flex items-center gap-2 mb-2 text-accent">
                     <Users /> Developers
-                  </h4>
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedGame.developers.map((dev) => (
                       <Badge key={dev} variant="outline" className="text-foreground border-border">

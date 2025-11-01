@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { achievements } from '@/lib/achievements-data';
+import Script from 'next/script';
 
 export default function AchievementsSection() {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +41,27 @@ export default function AchievementsSection() {
   // Map the vertical scroll progress (0 to 1) to a horizontal movement (0 to -carouselWidth)
   const x = useTransform(scrollYProgress, [0, 1], [0, -carouselWidth]);
 
+  // Generate JSON-LD schema for each achievement as an "Event"
+  const eventSchemas = achievements.map(achievement => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": achievement.title,
+    "description": achievement.description,
+    "image": `https://game-to-aim-cyber.web.app${achievement.image}`,
+    "organizer": {
+      "@type": "Organization",
+      "name": "Game To Aim",
+      "url": "https://game-to-aim-cyber.web.app"
+    }
+  }));
+
   return (
+    <>
+    <Script
+        id="achievements-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchemas) }}
+    />
     <section ref={targetRef} id="achievements" className="relative h-[300vh]">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
         <div className="container mx-auto px-4 md:px-16 pt-16 md:pt-24 relative z-10">
@@ -63,7 +84,7 @@ export default function AchievementsSection() {
                     <div className="relative w-full h-48 cyber-card-shimmer" style={{ clipPath: 'polygon(0 20px, 20px 0, 100% 0, 100% 100%, 0 100%)' }}>
                       <Image
                         src={achievement.image}
-                        alt={achievement.title}
+                        alt={achievement.description}
                         fill
                         sizes="(max-width: 768px) 50vw, 320px"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -87,5 +108,6 @@ export default function AchievementsSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

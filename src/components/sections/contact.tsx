@@ -105,15 +105,15 @@ export default function ContactSection() {
               </Link>
             </div>
             <div className={cn("flex items-center gap-6 animate-content-slide-in", { 'is-visible': isVisible })} style={{ animationDelay: '2.1s' }}>
-                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Follow us on Instagram">
                     <Instagram className="w-7 h-7" />
                     <span className="sr-only">Instagram</span>
                 </a>
-                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Connect with us on LinkedIn">
                     <Linkedin className="w-7 h-7" />
                     <span className="sr-only">LinkedIn</span>
                 </a>
-                <a href={COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                <a href={COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="Join our community chat">
                     <Users className="w-7 h-7" />
                     <span className="sr-only">Community</span>
                 </a>

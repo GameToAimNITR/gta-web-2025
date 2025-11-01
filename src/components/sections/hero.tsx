@@ -42,6 +42,7 @@ export default function HeroSection() {
         playsInline
         className="absolute z-0 w-full h-full object-cover"
         src="/gta_intro.webm"
+        aria-label="Promotional video for Game To Aim club"
       />
       <div className="absolute inset-0 bg-black/50 z-0"></div>
       <div className="z-10 flex flex-col items-center p-4">
@@ -84,6 +85,7 @@ export default function HeroSection() {
                   )}
                   onClick={() => handleNavigation(btn.target)}
                   onMouseEnter={() => setSelectedButton(btn.id as SelectedButton)}
+                  aria-label={btn.label}
                 >
                   <div className="cyber-button-content">
                     {btn.icon}

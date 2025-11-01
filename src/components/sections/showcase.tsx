@@ -93,6 +93,7 @@ export default function ShowcaseSection() {
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 0}
                 className="border-accent/30 hover:bg-accent/20 disabled:opacity-50"
+                aria-label="Previous page of assets"
               >
                 <ArrowUp className="w-5 h-5" />
               </Button>
@@ -105,6 +106,7 @@ export default function ShowcaseSection() {
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages - 1}
                 className="border-accent/30 hover:bg-accent/20 disabled:opacity-50"
+                aria-label="Next page of assets"
               >
                 <ArrowDown className="w-5 h-5" />
               </Button>

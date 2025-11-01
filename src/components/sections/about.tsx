@@ -171,7 +171,7 @@ export default function AboutSection() {
               <Card className="bg-card border-primary/20 backdrop-blur-sm transition-all duration-300 hover:border-primary hover:scale-105 hover:box-glow-primary h-full">
                 <CardHeader className="items-center">
                   {area.icon}
-                  <CardTitle className="mt-4 text-2xl font-semibold text-center">{area.title}</CardTitle>
+                  <CardTitle as="h3" className="mt-4 text-2xl font-semibold text-center">{area.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground text-center">{area.description}</p>
