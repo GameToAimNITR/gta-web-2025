@@ -33,7 +33,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: '/#about', label: 'About', Icon: Info },
   { href: '/#games', label: 'Games', Icon: Joystick },
-  { href: '/showcase', label: 'Showcase', Icon: Component },
+  { href: '/#showcase', label: 'Showcase', Icon: Component },
   { href: '/#achievements', label: 'Achievements', Icon: Trophy },
   { href: '/#member-access', label: 'Members', Icon: Users },
   { href: '/#contact', label: 'Contact', Icon: Send },

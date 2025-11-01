@@ -58,27 +58,35 @@ export default function ShowcaseSection() {
 
           <div className="flex flex-col gap-4">
              <h3 className="text-2xl font-bold text-primary">Select Asset</h3>
-            <div className="space-y-4 h-[440px]">
-              {paginatedModels.map((model) => (
-                <Button
+            <div className="space-y-4 h-[440px] relative">
+              {models.map((model, index) => (
+                <div
                   key={model.id}
-                  variant="outline"
-                  className={cn(
-                    "w-full justify-start text-left h-auto py-3 border-accent/30 hover:bg-accent/20",
-                    selectedModel.id === model.id && 'bg-accent/10 border-accent box-glow-accent'
-                  )}
-                  onClick={() => setSelectedModel(model)}
+                  className="absolute w-full transition-transform duration-500 ease-in-out"
+                  style={{
+                    top: `${index * 110}px`,
+                    transform: `translateY(-${currentPage * 110 * ITEMS_PER_PAGE}px)`,
+                  }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 bg-card rounded-md mt-1">
-                        {getIcon(model.fallback.geometry)}
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-full justify-start text-left h-auto py-3 border-accent/30 hover:bg-accent/20",
+                      selectedModel.id === model.id && 'bg-accent/10 border-accent box-glow-accent'
+                    )}
+                    onClick={() => setSelectedModel(model)}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="p-2 bg-card rounded-md mt-1">
+                          {getIcon(model.fallback.geometry)}
+                      </div>
+                      <div>
+                          <p className="font-bold text-lg text-accent">{model.name}</p>
+                          <p className="text-muted-foreground whitespace-normal text-sm">{model.description}</p>
+                      </div>
                     </div>
-                    <div>
-                        <p className="font-bold text-lg text-accent">{model.name}</p>
-                        <p className="text-muted-foreground whitespace-normal text-sm">{model.description}</p>
-                    </div>
-                  </div>
-                </Button>
+                  </Button>
+                </div>
               ))}
             </div>
             

@@ -9,6 +9,7 @@ import GamesSection from '@/components/sections/games';
 import HackerOverlay from '@/components/hacker-overlay';
 import { useAnimation } from '@/context/animation-context';
 import BioIDTerminal from '@/components/bio-id-terminal';
+import ShowcaseSection from '@/components/sections/showcase';
 
 export default function Home() {
   const { sequenceComplete } = useAnimation();
@@ -19,6 +20,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <GamesSection />
+      <ShowcaseSection />
       <AchievementsSection />
       <ContactSection />
       <section id="member-access" className="py-24">
