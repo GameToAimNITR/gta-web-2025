@@ -84,7 +84,8 @@ export const members: Member[] = [
         bestIndex = index;
       }
     }
-    return bestIndex;
+    // If no role is found in the order list, return Infinity to sort it last
+    return bestIndex === Infinity ? roleOrder.length : bestIndex;
   };
 
   // Primary sort: by graduation year, descending
