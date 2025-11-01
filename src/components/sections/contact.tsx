@@ -16,9 +16,9 @@ const presidentInfo = {
 
 const JOIN_US_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfaKcVCfLCq4Nt5klTXbhhFj6ox1dpbwPSeGUJQbCbhN7iOuQ/viewform?usp=sf_link';
 const COLLABORATE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEz-xeGZA0Av_0CWYYADY--ZgLh8Pt2YTkI9QF5et8IuQRWw/viewform?usp=header';
-const INSTAGRAM_URL = '#';
-const LINKEDIN_URL = '#';
-const COMMUNITY_URL = '#';
+const INSTAGRAM_URL = 'https://www.instagram.com/game.to.aim?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==';
+const LINKEDIN_URL = 'https://www.linkedin.com/company/game-to-aim/ ';
+const COMMUNITY_URL = 'https://chat.whatsapp.com/J5yYZf1OL6rL6VOS1iYKnL';
 
 
 export default function ContactSection() {

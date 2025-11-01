@@ -45,7 +45,7 @@ const FresnelMaterial = shaderMaterial(
       fresnel = pow(fresnel, uRimPower);
 
       vec3 finalColor = uBaseColor + (fresnel * uRimStrength * uRimColor);
-      float alpha = fresnel * 0.9;
+      float alpha = 0.1 + fresnel * 0.9;
       
       gl_FragColor = vec4(finalColor, alpha * uOpacity); // Apply overall opacity
     }
