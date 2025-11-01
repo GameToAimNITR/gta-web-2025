@@ -1,4 +1,3 @@
-
 import type { Member, Year } from './types';
 
 import { adityaArunav } from './adityaArunav';
@@ -56,10 +55,7 @@ export const members: Member[] = [
   sivanshuSurya,
   sumitKumarSahu,
 ].sort((a, b) => {
-  // Primary sort: by graduation year, descending
-  if (a.year !== b.year) return b.year - a.year;
-
-  // Secondary sort: by role priority
+  // Role priority list
   const roleOrder = [
     'President',
     'Vice President',
@@ -77,11 +73,12 @@ export const members: Member[] = [
     'Video Editing Team',
   ];
 
-  const getBestRoleIndex = (member: Member) => {
+  // Helper function to get the highest priority role index for a member
+  const getRoleIndex = (member: Member) => {
     const memberRoles = member.role.split(',').map(r => r.trim());
     let bestIndex = Infinity;
     for (const role of memberRoles) {
-      const index = roleOrder.findIndex(orderedRole => role === orderedRole);
+      const index = roleOrder.indexOf(role);
       if (index !== -1 && index < bestIndex) {
         bestIndex = index;
       }
@@ -89,16 +86,18 @@ export const members: Member[] = [
     return bestIndex;
   };
 
-  const aIndex = getBestRoleIndex(a);
-  const bIndex = getBestRoleIndex(b);
-
-  if (aIndex !== bIndex) {
-    if (aIndex !== Infinity && bIndex !== Infinity) {
-      return aIndex - bIndex;
-    }
-    return aIndex === Infinity ? 1 : -1;
+  // Primary sort: by graduation year, descending
+  if (a.year !== b.year) {
+    return b.year - a.year;
   }
 
+  // Secondary sort: by role priority
+  const aIndex = getRoleIndex(a);
+  const bIndex = getRoleIndex(b);
+  if (aIndex !== bIndex) {
+    return aIndex - bIndex;
+  }
+  
   // Tertiary sort: alphabetically by name
   return a.name.localeCompare(b.name);
 });
