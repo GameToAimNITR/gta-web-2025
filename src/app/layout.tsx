@@ -31,25 +31,26 @@ const url = 'https://game-to-aim-cyber.web.app';
 export const metadata: Metadata = {
   metadataBase: new URL(url),
   title: {
-    default: title,
+    default: 'Game To Aim | NIT Rourkela Game Development Club',
     template: `%s | Game To Aim - NIT Rourkela`,
   },
-  description: description,
+  description: 'Explore student-made games from Game To Aim, the official game development club of NIT Rourkela. Discover projects, join events, and connect with our community of creators.',
   keywords: [
     'Game To Aim',
     'NIT Rourkela',
     'Game Development Club',
-    'Student Game Projects',
+    'Student Game Projects NIT Rourkela',
     'Game Jam NIT Rourkela',
     'Unity',
     'Unreal Engine',
-    'VR Development',
+    'VR Development NIT Rourkela',
     'NIT Rourkela game development',
     'National Institute of Technology Rourkela',
+    'Rourkela tech clubs',
   ],
   openGraph: {
-    title: title,
-    description: description,
+    title: 'Game To Aim | NIT Rourkela Game Development Club',
+    description: 'The official website for Game To Aim (GTA), the game development club of NIT Rourkela. Explore our student-made games, 3D models, and join our community of creators.',
     url: url,
     siteName: 'Game To Aim',
     images: [
@@ -65,8 +66,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: title,
-    description: description,
+    title: 'Game To Aim | NIT Rourkela Game Development Club',
+    description: 'The official website for Game To Aim (GTA), the game development club of NIT Rourkela. Explore our student-made games, 3D models, and join our community of creators.',
     images: ['/og-image.png'],
   },
   robots: {
