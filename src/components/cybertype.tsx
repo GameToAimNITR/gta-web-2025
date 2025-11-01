@@ -25,8 +25,6 @@ export default function Cybertype({
   const [displayedText, setDisplayedText] = useState('');
   const [isAnimating, setIsAnimating] = useState(true);
 
-  // const animationRef = useRef<NodeJS.Timeout>();
-  // const loopTimeoutRef = useRef<NodeJS.Timeout>();
   const animationRef = useRef<NodeJS.Timeout | null>(null);
   const loopTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 

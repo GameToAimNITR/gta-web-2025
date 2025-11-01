@@ -14,6 +14,5 @@ export const adityaArunav: Member = {
   ],
   specialAbility: 'aditya.arunav',
   bio: 'Ex-Secretary and a key member in the development of CampusSurvival VR and CampusQuest VR. A talented designer and a part-time dancer.',
-  githubUrl: undefined,
   linkedinUrl: 'https://www.linkedin.com/in/adityaarunav410',
 };

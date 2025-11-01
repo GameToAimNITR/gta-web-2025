@@ -14,6 +14,5 @@ export const mehulBhatia: Member = {
   ],
   specialAbility: 'Visual Storyteller',
   bio: 'I was always interested in the world of 3D and loved to play games and also stream them, especially the ones with good stories and visuals.',
-  githubUrl: undefined,
   linkedinUrl: 'https://www.linkedin.com/in/mehul-bhatia-nitrkl',
 };

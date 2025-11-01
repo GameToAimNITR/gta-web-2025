@@ -14,6 +14,5 @@ export const sivanshuSurya: Member = {
   ],
   specialAbility: 'Shhurya',
   bio: 'Treasurer and one of the dedicated 3D modellers of the club, Sivanshu brings structure and precision to every project. He combines creative design with a strong sense of responsibility, helping the team maintain quality and order.',
-  githubUrl: undefined,
   linkedinUrl: 'https://www.linkedin.com/in/sivanshu-surya-59a4212a5',
 };
