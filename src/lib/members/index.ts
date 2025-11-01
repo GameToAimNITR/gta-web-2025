@@ -95,9 +95,9 @@ export const members: Member[] = [
   if (aIndex !== Infinity && bIndex !== Infinity) {
     if (aIndex !== bIndex) return aIndex - bIndex;
   } else if (aIndex !== Infinity) {
-    return -1; // a has a ranked role, b doesn't
+    return -1; // a has a ranked role, b doesn't, so a comes first
   } else if (bIndex !== Infinity) {
-    return 1; // b has a ranked role, a doesn't
+    return 1; // b has a ranked role, a doesn't, so b comes first
   }
 
   // Tertiary sort: alphabetically by name

@@ -14,7 +14,7 @@ const AnimatedCounter = ({ value }: { value: number }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry && entry.isIntersecting) {
           let start = 0;
           const end = value;
           if (start === end) {
