@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Mail, Phone, User, Handshake, UserPlus } from 'lucide-react';
+import { Mail, Phone, User, Handshake, UserPlus, Instagram, Linkedin, Users } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import Typewriter from '@/components/typewriter';
@@ -16,6 +16,10 @@ const presidentInfo = {
 
 const JOIN_US_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfaKcVCfLCq4Nt5klTXbhhFj6ox1dpbwPSeGUJQbCbhN7iOuQ/viewform?usp=sf_link';
 const COLLABORATE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEz-xeGZA0Av_0CWYYADY--ZgLh8Pt2YTkI9QF5et8IuQRWw/viewform?usp=header';
+const INSTAGRAM_URL = '#';
+const LINKEDIN_URL = '#';
+const COMMUNITY_URL = '#';
+
 
 export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -99,6 +103,20 @@ export default function ContactSection() {
                 <span className="font-bold text-lg mt-2">Collaborate</span>
                 <span className="text-sm text-muted-foreground mt-1">Partner with us</span>
               </Link>
+            </div>
+            <div className={cn("flex items-center gap-6 animate-content-slide-in", { 'is-visible': isVisible })} style={{ animationDelay: '2.1s' }}>
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                    <Instagram className="w-7 h-7" />
+                    <span className="sr-only">Instagram</span>
+                </a>
+                <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                    <Linkedin className="w-7 h-7" />
+                    <span className="sr-only">LinkedIn</span>
+                </a>
+                <a href={COMMUNITY_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
+                    <Users className="w-7 h-7" />
+                    <span className="sr-only">Community</span>
+                </a>
             </div>
           </div>
         </div>
