@@ -1,61 +1,77 @@
-
-'use client';
-
-import { useState } from 'react';
-import { forms as initialForms } from '@/lib/forms-data';
-import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { FileText, ArrowRight, Table } from 'lucide-react';
-
-export default function FormsListPage() {
-  const [forms, setForms] = useState(initialForms);
-
-  return (
-    <div className="container mx-auto py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-glow-primary">Available Forms</h1>
-        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-          Here is a list of all the forms that have been created. Click on any form to view and fill it out.
-        </p>
-      </div>
-
-      {forms.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {forms.map(form => (
-            <Card key={form.id} className="group border-primary/20 hover:border-primary transition-all duration-300 hover:box-glow-primary flex flex-col">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                    <CardTitle className="text-2xl font-bold group-hover:text-accent transition-colors">{form.title}</CardTitle>
-                    <FileText className="w-8 h-8 text-primary/50 group-hover:text-accent transition-colors" />
-                </div>
-                <CardDescription>{form.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="mt-auto flex flex-col gap-2">
-                <Button asChild variant="outline" className="w-full group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                  <Link href={`/forms/${form.id}`}>
-                    Open Form <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="secondary" className="w-full">
-                  <Link href={`/form-builder/responses/${form.id}`}>
-                    View Responses <Table className="ml-2 w-4 h-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-16 border-2 border-dashed border-border rounded-lg">
-            <FileText className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <h2 className="text-2xl font-bold">No Forms Yet</h2>
-            <p className="text-muted-foreground mt-2">Go to the form builder to create your first form.</p>
-            <Button asChild className="mt-6">
-                <Link href="/form-builder">Create Form</Link>
-            </Button>
-        </div>
-      )}
-    </div>
-  );
+{
+  "name": "nextn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
+    "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genkit-ai/googleai": "^1.13.0",
+    "@genkit-ai/next": "^1.13.0",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-avatar": "^1.1.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-collapsible": "^1.1.11",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-menubar": "^1.1.6",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.1.3",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "@radix-ui/react-toast": "^1.2.6",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "@react-three/drei": "9.108.3",
+    "@react-three/fiber": "9.2.0",
+    "@studio-freight/react-lenis": "^0.0.47",
+    "@studio-freight/tempus": "^0.0.44",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.5.0",
+    "embla-carousel-react": "^8.6.0",
+    "firebase": "^11.9.1",
+    "framer-motion": "^11.3.8",
+    "genkit": "^1.13.0",
+    "lucide-react": "^0.475.0",
+    "next": "^15.0.0-rc.0",
+    "react": "^19.0.0-rc.0",
+    "react-day-picker": "^9.11.1",
+    "react-dom": "^19.0.0-rc.0",
+    "recharts": "^2.15.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.164.0",
+    "zod": "^3.24.2",
+    "zod-validation-error": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19.0.0-rc.0",
+    "@types/react-dom": "^19.0.0-rc.0",
+    "@types/three": "^0.164.0",
+    "genkit-cli": "^1.13.0",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "react": "^19.0.0-rc.0",
+    "react-dom": "^19.0.0-rc.0"
+  }
 }

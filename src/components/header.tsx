@@ -46,7 +46,6 @@ const navLinks: NavLink[] = [
   { href: '/#achievements', label: 'Achievements', Icon: Trophy },
   { href: '/#contact', label: 'Contact', Icon: Send },
   { href: '/#member-access', label: 'Members', Icon: Users },
-  { href: '/form-builder', label: 'Form Builder', Icon: FileText },
 ];
 
 export default function Header() {

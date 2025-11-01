@@ -1,59 +1,77 @@
-'use server';
-
-export interface FormState {
-  message: string;
-  status: 'success' | 'error' | 'idle';
-}
-
-// This is a server action.
-// It will be executed on the server, not in the browser.
-export async function submitForm(
-  prevState: FormState,
-  formData: FormData
-): Promise<FormState> {
-  // Simulate network latency
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
-  const formId = formData.get('formId');
-  console.log(`Received submission for form: ${formId}`);
-
-  // You can iterate through formData to get all the submitted values
-  for (const [key, value] of formData.entries()) {
-    console.log(`${key}: ${value}`);
+{
+  "name": "nextn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
+    "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genkit-ai/googleai": "^1.13.0",
+    "@genkit-ai/next": "^1.13.0",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-avatar": "^1.1.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-collapsible": "^1.1.11",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-menubar": "^1.1.6",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.1.3",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "@radix-ui/react-toast": "^1.2.6",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "@react-three/drei": "9.108.3",
+    "@react-three/fiber": "9.2.0",
+    "@studio-freight/react-lenis": "^0.0.47",
+    "@studio-freight/tempus": "^0.0.44",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.5.0",
+    "embla-carousel-react": "^8.6.0",
+    "firebase": "^11.9.1",
+    "framer-motion": "^11.3.8",
+    "genkit": "^1.13.0",
+    "lucide-react": "^0.475.0",
+    "next": "^15.0.0-rc.0",
+    "react": "^19.0.0-rc.0",
+    "react-day-picker": "^9.11.1",
+    "react-dom": "^19.0.0-rc.0",
+    "recharts": "^2.15.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.164.0",
+    "zod": "^3.24.2",
+    "zod-validation-error": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19.0.0-rc.0",
+    "@types/react-dom": "^19.0.0-rc.0",
+    "@types/three": "^0.164.0",
+    "genkit-cli": "^1.13.0",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "react": "^19.0.0-rc.0",
+    "react-dom": "^19.0.0-rc.0"
   }
-
-  // ====================================================================
-  // TODO: Add your Google Sheets integration logic here.
-  // - Use a library like 'google-spreadsheet' or the Google Sheets API.
-  // - Authenticate with your Google Cloud credentials (use environment variables).
-  // - Find the correct sheet based on the formId.
-  // - Append a new row with the formData.
-  //
-  // Example using a placeholder function:
-  //
-  // try {
-  //   const result = await saveToGoogleSheet(formData);
-  //   if (result.success) {
-  //     return {
-  //       message: 'Thank you! Your response has been recorded.',
-  //       status: 'success',
-  //     };
-  //   } else {
-  //     throw new Error(result.error);
-  //   }
-  // } catch (error) {
-  //   console.error(error);
-  //   return {
-  //     message: 'An error occurred while submitting the form. Please try again.',
-  //     status: 'error',
-  //   };
-  // }
-  // ====================================================================
-
-
-  // For now, we'll just return a success message.
-  return {
-    message: 'Thank you! Your response has been recorded. (Backend not implemented)',
-    status: 'success',
-  };
 }

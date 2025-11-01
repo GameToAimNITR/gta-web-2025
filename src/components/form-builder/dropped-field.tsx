@@ -1,100 +1,77 @@
-
-'use client';
-
-import { useState } from 'react';
-import type { FormField } from '@/lib/forms-data';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { Trash2, Edit, Save, PlusCircle, XCircle } from 'lucide-react';
-import { Switch } from '@/components/ui/switch';
-
-interface DroppedFieldProps {
-  field: FormField;
-  onUpdate: (field: FormField) => void;
-  onRemove: (id: string) => void;
-}
-
-export default function DroppedField({ field, onUpdate, onRemove }: DroppedFieldProps) {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editableField, setEditableField] = useState(field);
-
-  const handleSave = () => {
-    onUpdate(editableField);
-    setIsEditing(false);
-  };
-
-  const handleOptionChange = (index: number, value: string) => {
-    const newOptions = [...(editableField.options || [])];
-    newOptions[index] = value;
-    setEditableField(prev => ({...prev, options: newOptions}));
-  };
-
-  const addOption = () => {
-    setEditableField(prev => ({...prev, options: [...(prev.options || []), `Option ${ (prev.options?.length || 0) + 1}`]}));
-  };
-
-  const removeOption = (index: number) => {
-    const newOptions = [...(editableField.options || [])];
-    newOptions.splice(index, 1);
-    setEditableField(prev => ({...prev, options: newOptions}));
-  };
-
-
-  return (
-    <Card className="bg-background/50 relative group">
-      <CardHeader className="flex flex-row items-start justify-between">
-        <div>
-            <h4 className="font-semibold">{field.label}</h4>
-            <p className="text-xs text-muted-foreground">{field.type}</p>
-        </div>
-        <div className="absolute top-2 right-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setIsEditing(!isEditing)}>
-                <Edit className="h-4 w-4" />
-            </Button>
-             <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => onRemove(field.id)}>
-                <Trash2 className="h-4 w-4" />
-            </Button>
-        </div>
-      </CardHeader>
-      {isEditing && (
-        <CardContent className="space-y-4 border-t border-border pt-4">
-            <div>
-                <Label htmlFor={`label-${field.id}`}>Label</Label>
-                <Input id={`label-${field.id}`} value={editableField.label} onChange={e => setEditableField({...editableField, label: e.target.value})} />
-            </div>
-             <div>
-                <Label htmlFor={`placeholder-${field.id}`}>Placeholder</Label>
-                <Input id={`placeholder-${field.id}`} value={editableField.placeholder || ''} onChange={e => setEditableField({...editableField, placeholder: e.target.value})} />
-            </div>
-            <div className="flex items-center space-x-2">
-                <Switch id={`required-${field.id}`} checked={editableField.required} onCheckedChange={checked => setEditableField({...editableField, required: checked})} />
-                <Label htmlFor={`required-${field.id}`}>Required</Label>
-            </div>
-            
-            {(field.type === 'radio' || field.type === 'select') && (
-              <div className="space-y-2">
-                <Label>Options</Label>
-                {editableField.options?.map((option, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <Input value={option} onChange={(e) => handleOptionChange(index, e.target.value)} />
-                    <Button variant="ghost" size="icon" className="text-destructive h-8 w-8" onClick={() => removeOption(index)}>
-                        <XCircle className="w-4 h-4" />
-                    </Button>
-                  </div>
-                ))}
-                <Button variant="outline" size="sm" onClick={addOption}>
-                    <PlusCircle className="w-4 h-4 mr-2" /> Add Option
-                </Button>
-              </div>
-            )}
-
-            <div className="flex justify-end">
-                <Button size="sm" onClick={handleSave}><Save className="w-4 h-4 mr-2"/> Save</Button>
-            </div>
-        </CardContent>
-      )}
-    </Card>
-  );
+{
+  "name": "nextn",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
+    "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@genkit-ai/googleai": "^1.13.0",
+    "@genkit-ai/next": "^1.13.0",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-avatar": "^1.1.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-collapsible": "^1.1.11",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-menubar": "^1.1.6",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.3",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slider": "^1.2.3",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.1.3",
+    "@radix-ui/react-tabs": "^1.1.3",
+    "@radix-ui/react-toast": "^1.2.6",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "@react-three/drei": "9.108.3",
+    "@react-three/fiber": "9.2.0",
+    "@studio-freight/react-lenis": "^0.0.47",
+    "@studio-freight/tempus": "^0.0.44",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.5.0",
+    "embla-carousel-react": "^8.6.0",
+    "firebase": "^11.9.1",
+    "framer-motion": "^11.3.8",
+    "genkit": "^1.13.0",
+    "lucide-react": "^0.475.0",
+    "next": "^15.0.0-rc.0",
+    "react": "^19.0.0-rc.0",
+    "react-day-picker": "^9.11.1",
+    "react-dom": "^19.0.0-rc.0",
+    "recharts": "^2.15.1",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.164.0",
+    "zod": "^3.24.2",
+    "zod-validation-error": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19.0.0-rc.0",
+    "@types/react-dom": "^19.0.0-rc.0",
+    "@types/three": "^0.164.0",
+    "genkit-cli": "^1.13.0",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "react": "^19.0.0-rc.0",
+    "react-dom": "^19.0.0-rc.0"
+  }
 }
