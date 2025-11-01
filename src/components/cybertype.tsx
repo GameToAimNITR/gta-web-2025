@@ -48,7 +48,9 @@ export default function Cybertype({
     // Shuffle the indices using Fisher-Yates algorithm
     for (let i = shuffleOrder.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffleOrder[i], shuffleOrder[j]] = [shuffleOrder[j], shuffleOrder[i]];
+        const temp = shuffleOrder[i]!;
+        shuffleOrder[i] = shuffleOrder[j]!;
+        shuffleOrder[j] = temp;
     }
 
     let revealedCount = 0;
@@ -60,7 +62,9 @@ export default function Cybertype({
         // Reveal one new character per frame in shuffled order
         if (revealedCount < shuffleOrder.length) {
             const indexToReveal = shuffleOrder[revealedCount];
-            revealed[indexToReveal] = true;
+            if (indexToReveal !== undefined) {
+              revealed[indexToReveal] = true;
+            }
             revealedCount++;
         }
 
@@ -98,7 +102,7 @@ setIsAnimating(false);
       if (animationRef.current) clearInterval(animationRef.current);
       if (loopTimeoutRef.current) clearTimeout(loopTimeoutRef.current);
     };
-  }, [currentIndex, revealDelay, revealSpeed, loopDelay, JSON.stringify(texts)]);
+  }, [currentIndex, revealDelay, revealSpeed, loopDelay, texts]);
 
   return (
     <p className={cn('font-code text-xl md:text-2xl text-accent text-glow-accent text-center h-16 flex items-center justify-center', className)}>
