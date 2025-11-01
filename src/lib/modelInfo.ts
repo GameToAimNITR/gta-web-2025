@@ -35,7 +35,7 @@ export const models: ModelInfo[] = [
     id: 'modern-building',
     name: 'Modern Building',
     description: 'A sleek, contemporary architectural structure symbolizing urban innovation.',
-    url: 'https://res.cloudinary.com/dwwvl1ysj/image/upload/v1761743081/Cloudinary%203D/models/Crane_kazsj4.glb',
+    url: 'https://cdn.jsdelivr.net/gh/GameToAimNITR/GameToAimNITR.github.io/public/models/Building_Model.glb',
     fallback: {
       geometry: 'box',
       color: '#95a5a6', // gray
