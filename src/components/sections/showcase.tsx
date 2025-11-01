@@ -18,7 +18,7 @@ const ModelViewer = dynamic(() => import('@/components/model-viewer'), {
 const ITEMS_PER_PAGE = 4;
 
 export default function ShowcaseSection() {
-  const [selectedModel, setSelectedModel] = useState<ModelInfo>(models[0]);
+  const [selectedModel, setSelectedModel] = useState<ModelInfo>(models[0]!);
   const [currentPage, setCurrentPage] = useState(0);
 
   const totalPages = Math.ceil(models.length / ITEMS_PER_PAGE);
@@ -58,15 +58,11 @@ export default function ShowcaseSection() {
 
           <div className="flex flex-col gap-4">
              <h3 className="text-2xl font-bold text-primary">Select Asset</h3>
-            <div className="space-y-4 h-[440px] relative">
-              {models.map((model, index) => (
+             <div className="space-y-4 h-[440px] relative overflow-hidden">
+              {paginatedModels.map((model) => (
                 <div
                   key={model.id}
-                  className="absolute w-full transition-transform duration-500 ease-in-out"
-                  style={{
-                    top: `${index * 110}px`,
-                    transform: `translateY(-${currentPage * 110 * ITEMS_PER_PAGE}px)`,
-                  }}
+                  className="w-full"
                 >
                   <Button
                     variant="outline"

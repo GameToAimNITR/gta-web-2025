@@ -68,7 +68,7 @@ export const members: Member[] = [
     'Code Head',
     '3D Head',
     'Design Head',
-    'Content PR head',
+    'Content and PR Head',
     'Code Team',
     '3D Team',
     'Game and Design Team',
@@ -92,12 +92,11 @@ export const members: Member[] = [
   const aIndex = getBestRoleIndex(a);
   const bIndex = getBestRoleIndex(b);
 
-  if (aIndex !== Infinity && bIndex !== Infinity) {
-    if (aIndex !== bIndex) return aIndex - bIndex;
-  } else if (aIndex !== Infinity) {
-    return -1; // a has a ranked role, b doesn't, so a comes first
-  } else if (bIndex !== Infinity) {
-    return 1; // b has a ranked role, a doesn't, so b comes first
+  if (aIndex !== bIndex) {
+    if (aIndex !== Infinity && bIndex !== Infinity) {
+      return aIndex - bIndex;
+    }
+    return aIndex === Infinity ? 1 : -1;
   }
 
   // Tertiary sort: alphabetically by name
