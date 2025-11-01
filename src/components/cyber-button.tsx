@@ -9,7 +9,7 @@ interface CyberButtonProps {
     label: string;
     isSelected: boolean;
     onMouseEnter: () => void;
-    onClick?: () => void; // Optional onClick handler
+    onClick?: () => void;
     className?: string;
 }
 

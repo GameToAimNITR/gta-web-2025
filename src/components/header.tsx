@@ -7,8 +7,6 @@ import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
 import {
@@ -30,7 +28,6 @@ interface NavLink {
   href: string;
   label: string;
   Icon: ComponentType<{ className?: string }>;
-  isExternal?: boolean;
 }
 
 const navLinks: NavLink[] = [
@@ -38,8 +35,8 @@ const navLinks: NavLink[] = [
   { href: '/#games', label: 'Games', Icon: Joystick },
   { href: '/showcase', label: 'Showcase', Icon: Component },
   { href: '/#achievements', label: 'Achievements', Icon: Trophy },
-  { href: '/#contact', label: 'Contact', Icon: Send },
   { href: '/#member-access', label: 'Members', Icon: Users },
+  { href: '/#contact', label: 'Contact', Icon: Send },
 ];
 
 export default function Header() {
@@ -175,10 +172,6 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] cyber-header border-l-border/60">
-              <SheetTitle className="sr-only">Menu</SheetTitle>
-              <SheetDescription className="sr-only">
-                The main navigation links for the website.
-              </SheetDescription>
               <div className="flex flex-col h-full">
                 <nav className="flex-1 space-y-4 pt-6">
                   {navLinks.map((link) => (
