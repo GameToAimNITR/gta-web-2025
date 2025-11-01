@@ -3,10 +3,15 @@
 import { AnimationProvider } from '@/context/animation-context';
 import LenisProvider from '@/components/lenis-provider';
 import CursorFX from '@/components/cursor-fx';
-import BackgroundFX from '@/components/background-fx';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
+import dynamic from 'next/dynamic';
+
+const BackgroundFX = dynamic(() => import('@/components/background-fx'), {
+  ssr: false,
+});
+
 
 export function RootProviders({ children }: { children: React.ReactNode }) {
   return (
