@@ -2,7 +2,7 @@ import type { Member } from './types';
 
 export const omkarAnmolChoudhuary: Member = {
   id: 14,
-  name: 'Omkar Anmol choudhuary',
+  name: 'Omkar Anmol Choudhuary',
   role: 'Code Team',
   year: 2028,
   image: '/members/omkar_Choudhuary.jpg',
@@ -13,7 +13,7 @@ export const omkarAnmolChoudhuary: Member = {
     { name: 'Badminton', level: 80 },
   ],
   specialAbility: 'Silent Focus',
-  bio: "I’m Omkar Anmol Choudhary, currently pursuing Electrical Engineering and really into coding. I’m a gamer at heart and love playing badminton. I am an introvert, and and my favourite thing is spending time with my favorite companion my laptop.",
-  githubUrl: '#',
-  linkedinUrl: '#',
+  bio: "I’m Omkar Anmol Choudhuary, currently pursuing Electrical Engineering and really into coding. I’m a gamer at heart and love playing badminton. I am an introvert, and my favourite thing is spending time with my favorite companion — my laptop.",
+  githubUrl: 'https://github.com/Omkar-87',
+  linkedinUrl: 'https://www.linkedin.com/in/omkarchoudhuary/',
 };

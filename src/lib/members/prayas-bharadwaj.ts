@@ -14,6 +14,6 @@ export const prayasBharadwaj: Member = {
   ],
   specialAbility: 'Intentional Motion',
   bio: "I’m a curious storm in constant motion. I chase depth, not for perfection, but because I can’t help it. I oscillate between obsession and laughter like it’s natural. I question everything, including myself, and enjoy the paradox. I don’t know exactly what I am — but whatever it is, it’s intentional.",
-  githubUrl: '#',
-  linkedinUrl: '#',
+  githubUrl: 'https://github.com/devsw-prayas',
+  linkedinUrl: 'https://www.linkedin.com/in/prayas-bharadwaj-053886323/',
 };

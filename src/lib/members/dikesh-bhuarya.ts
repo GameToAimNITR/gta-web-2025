@@ -14,6 +14,6 @@ export const dikeshBhuarya: Member = {
   ],
   specialAbility: 'Next-Gen Explorer',
   bio: "Hey, I'm a gaming and tech enthusiast who’s always up for an adventure—whether it’s in a game or trying out new gadgets. I love playing PC and mobile games, exploring new worlds, and geeking out over the latest tech. Always chasing that next cool experience!",
-  githubUrl: '#',
-  linkedinUrl: '#',
+  githubUrl: 'https://github.com/bhuarya660',
+  linkedinUrl: 'https://www.linkedin.com/in/dikesh-bhuarya-030266316',
 };

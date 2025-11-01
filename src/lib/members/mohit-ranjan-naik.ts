@@ -14,6 +14,6 @@ export const mohitRanjanNaik: Member = {
   ],
   specialAbility: 'Creative Synthesis',
   bio: "Hi, I'm Mohit Ranjan Naik. I'm passionate about creativity and technology, with hobbies that include playing the electric guitar, music production, 3D modeling, game development, and exploring AI/ML. I enjoy blending art and code to build something and express myself through both sound and visuals.",
-  githubUrl: '#',
-  linkedinUrl: '#',
+  githubUrl: 'https://github.com/introsworld',
+  linkedinUrl: 'https://www.linkedin.com/in/mohit-ranjan-n-83289a310',
 };
