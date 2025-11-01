@@ -8,7 +8,6 @@ import AboutSection from '@/components/sections/about';
 import AchievementsSection from '@/components/sections/achievements';
 import ContactSection from '@/components/sections/contact';
 import GamesSection from '@/components/sections/games';
-import ShowcaseSection from '@/components/sections/showcase';
 import HackerOverlay from '@/components/hacker-overlay';
 import { useAnimation } from '@/context/animation-context';
 import { useLenis } from '@studio-freight/react-lenis';
@@ -22,7 +21,6 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
   const sectionsRef = useRef<HTMLElement[]>([]);
   const isScrolling = useRef(false);
-  const isDiving = useRef(false);
   const enableScroll = useRef(false);
   const [currentSection, setCurrentSection] = useState(0);
   const lenis = useLenis();
@@ -64,48 +62,16 @@ export default function Home() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
       onComplete: () => {
         isScrolling.current = false;
-        if (isDiving.current) {
-          document.body.classList.remove('is-diving');
-          isDiving.current = false;
-        }
       },
     });
   }, [lenis]);
 
-  const handleNeuralDive = useCallback(() => {
-    if (isScrolling.current || isDiving.current) return;
-
-    isDiving.current = true;
-    document.body.classList.add('is-diving');
-
-    // Wait for glitch animation to play out
-    setTimeout(() => {
-      const showcaseIndex = sectionsRef.current.findIndex(sec => sec.id === 'showcase');
-      if (showcaseIndex !== -1) {
-        scrollToSection(showcaseIndex);
-      } else {
-        // Fallback if showcase section not found
-        document.body.classList.remove('is-diving');
-        isDiving.current = false;
-      }
-    }, 2000); // Must match the animation duration
-  }, [scrollToSection]);
-
   // Handle user-initiated scroll via mouse wheel and keyboard
   useEffect(() => {
     const handleScrollIntent = (direction: number) => {
-      if (!enableScroll.current || isScrolling.current || isDiving.current) {
+      if (!enableScroll.current || isScrolling.current) {
         return;
       }
-
-      const gamesSectionIndex = sectionsRef.current.findIndex(sec => sec.id === 'games');
-
-      // Intercept scroll down from 'games' section
-      if (currentSection === gamesSectionIndex && direction === 1) {
-          handleNeuralDive();
-          return;
-      }
-
       const nextSectionIndex = currentSection + direction;
       if (nextSectionIndex >= 0 && nextSectionIndex < sectionsRef.current.length) {
         scrollToSection(nextSectionIndex);
@@ -143,7 +109,7 @@ export default function Home() {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('keydown', handleKeyDown);
     }
-  }, [currentSection, scrollToSection, handleNeuralDive]);
+  }, [currentSection, scrollToSection]);
 
   // Sync state when scrolling via nav links to keep track of the current section
   useEffect(() => {
@@ -177,7 +143,6 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <GamesSection />
-      <ShowcaseSection />
       <AchievementsSection />
       <ContactSection />
       <section id="member-access" className="py-24">
