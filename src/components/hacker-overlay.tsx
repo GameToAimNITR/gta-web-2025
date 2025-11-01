@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -32,6 +33,8 @@ export default function HackerOverlay() {
     }
 
     const currentItem = sequence[currentStep];
+    if (!currentItem) return; // Guard clause to ensure currentItem is defined
+
     const timer = setTimeout(() => {
       setCurrentStep(prev => prev + 1);
     }, currentItem.duration);
@@ -51,9 +54,9 @@ export default function HackerOverlay() {
           <div className="whitespace-pre-wrap">
             {staticTextForGlitch}
           </div>
-          {currentStep < sequence.length && (
+          {currentStep < sequence.length && sequence[currentStep] && (
             <div className="whitespace-pre-wrap">
-                <Typewriter text={sequence[currentStep].text} speed={25} />
+                <Typewriter text={sequence[currentStep]!.text} speed={25} />
             </div>
           )}
         </div>

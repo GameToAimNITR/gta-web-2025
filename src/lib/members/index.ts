@@ -56,8 +56,10 @@ export const members: Member[] = [
   sivanshuSurya,
   sumitKumarSahu,
 ].sort((a, b) => {
+  // Primary sort: by graduation year, descending
   if (a.year !== b.year) return b.year - a.year;
 
+  // Secondary sort: by role priority
   const roleOrder = [
     'President',
     'Vice President',
@@ -72,26 +74,35 @@ export const members: Member[] = [
     'Game and Design Team',
     'Web Dev Team',
     'Content and PR Team',
-    'Video Editing Team'
+    'Video Editing Team',
   ];
-  
-  const aIndex = roleOrder.findIndex(role => a.role.includes(role));
-  const bIndex = roleOrder.findIndex(role => b.role.includes(role));
 
-  // If both roles are in the order list, sort by their index
-  if (aIndex !== -1 && bIndex !== -1) {
+  const getBestRoleIndex = (member: Member) => {
+    const memberRoles = member.role.split(',').map(r => r.trim());
+    let bestIndex = Infinity;
+    for (const role of memberRoles) {
+      const index = roleOrder.findIndex(orderedRole => role === orderedRole);
+      if (index !== -1 && index < bestIndex) {
+        bestIndex = index;
+      }
+    }
+    return bestIndex;
+  };
+
+  const aIndex = getBestRoleIndex(a);
+  const bIndex = getBestRoleIndex(b);
+
+  if (aIndex !== Infinity && bIndex !== Infinity) {
     if (aIndex !== bIndex) return aIndex - bIndex;
-  }
-  // If only one role is in the list, it comes first
-  else if (aIndex !== -1) {
-    return -1;
-  }
-  else if (bIndex !== -1) {
-    return 1;
+  } else if (aIndex !== Infinity) {
+    return -1; // a has a ranked role, b doesn't
+  } else if (bIndex !== Infinity) {
+    return 1; // b has a ranked role, a doesn't
   }
 
-  // Finally, alphabetically by name if roles are the same or not in the list
+  // Tertiary sort: alphabetically by name
   return a.name.localeCompare(b.name);
 });
+
 
 export const years: Year[] = [...new Set(members.map(m => m.year))].sort((a, b) => b - a) as Year[];
