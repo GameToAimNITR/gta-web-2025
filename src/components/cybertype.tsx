@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
@@ -34,6 +35,10 @@ export default function Cybertype({
     if (loopTimeoutRef.current) clearTimeout(loopTimeoutRef.current);
 
     const targetText = texts[currentIndex];
+    if (!targetText) {
+      setIsAnimating(false);
+      return;
+    }
     setIsAnimating(true);
 
     // An array to track which character indices have been revealed
@@ -79,7 +84,7 @@ export default function Cybertype({
           if (animationRef.current) clearInterval(animationRef.current);
           // Final set to ensure correct text is displayed
           setDisplayedText(targetText);
-          setIsAnimating(false);
+setIsAnimating(false);
 
           loopTimeoutRef.current = setTimeout(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);

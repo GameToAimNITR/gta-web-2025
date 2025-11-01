@@ -1,3 +1,4 @@
+
 import type { Member, Year } from './types';
 
 import { adityaArunav } from './adityaArunav';
@@ -66,7 +67,6 @@ export const members: Member[] = [
     '3D Head',
     'Design Head',
     'Content PR head',
-    'Content PR head',
     'Code Team',
     '3D Team',
     'Game and Design Team',
@@ -74,12 +74,23 @@ export const members: Member[] = [
     'Content and PR Team',
     'Video Editing Team'
   ];
+  
   const aIndex = roleOrder.findIndex(role => a.role.includes(role));
   const bIndex = roleOrder.findIndex(role => b.role.includes(role));
 
-  if (aIndex !== -1 && bIndex !== -1 && aIndex !== bIndex) return aIndex - bIndex;
+  // If both roles are in the order list, sort by their index
+  if (aIndex !== -1 && bIndex !== -1) {
+    if (aIndex !== bIndex) return aIndex - bIndex;
+  }
+  // If only one role is in the list, it comes first
+  else if (aIndex !== -1) {
+    return -1;
+  }
+  else if (bIndex !== -1) {
+    return 1;
+  }
 
-  // Finally, alphabetically by name
+  // Finally, alphabetically by name if roles are the same or not in the list
   return a.name.localeCompare(b.name);
 });
 
