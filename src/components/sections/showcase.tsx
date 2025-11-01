@@ -22,15 +22,12 @@ export default function ShowcaseSection() {
   const [currentPage, setCurrentPage] = useState(0);
 
   const totalPages = Math.ceil(models.length / ITEMS_PER_PAGE);
-  const startIndex = currentPage * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-  const currentModels = models.slice(startIndex, endIndex);
 
   const handlePageChange = (newPage: number) => {
     if (newPage < 0 || newPage >= totalPages) return;
     setCurrentPage(newPage);
   };
-
+  
   const getIcon = (geometry: ModelInfo['fallback']['geometry']) => {
     switch (geometry) {
       case 'box':
@@ -58,28 +55,34 @@ export default function ShowcaseSection() {
              <h3 className="text-2xl font-bold text-primary">Select Asset</h3>
             <div className="relative h-[450px] overflow-hidden">
                 <div
-                    className={"transition-all duration-300 ease-in-out space-y-4"}
+                    className={"transition-transform duration-300 ease-in-out space-y-4 absolute w-full"}
+                    style={{ transform: `translateY(-${currentPage * 100}%)` }}
                 >
-                    {currentModels.map((model) => (
-                    <Button
+                    {models.map((model, index) => (
+                      <div
                         key={model.id}
-                        variant="outline"
-                        className={cn(
-                        "w-full justify-start text-left h-auto py-3 border-accent/30 hover:bg-accent/20",
-                        selectedModel.id === model.id && 'bg-accent/10 border-accent box-glow-accent'
-                        )}
-                        onClick={() => setSelectedModel(model)}
-                    >
-                        <div className="flex items-start gap-4">
-                        <div className="p-2 bg-card rounded-md mt-1">
-                            {getIcon(model.fallback.geometry)}
-                        </div>
-                        <div>
-                            <p className="font-bold text-lg text-accent">{model.name}</p>
-                            <p className="text-muted-foreground whitespace-normal text-sm">{model.description}</p>
-                        </div>
-                        </div>
-                    </Button>
+                        className="w-full absolute"
+                        style={{ top: `${(index) * 115}px`}}
+                      >
+                        <Button
+                          variant="outline"
+                          className={cn(
+                          "w-full justify-start text-left h-auto py-3 border-accent/30 hover:bg-accent/20",
+                          selectedModel.id === model.id && 'bg-accent/10 border-accent box-glow-accent'
+                          )}
+                          onClick={() => setSelectedModel(model)}
+                        >
+                          <div className="flex items-start gap-4">
+                            <div className="p-2 bg-card rounded-md mt-1">
+                                {getIcon(model.fallback.geometry)}
+                            </div>
+                            <div>
+                                <p className="font-bold text-lg text-accent">{model.name}</p>
+                                <p className="text-muted-foreground whitespace-normal text-sm">{model.description}</p>
+                            </div>
+                          </div>
+                        </Button>
+                      </div>
                     ))}
                 </div>
             </div>
