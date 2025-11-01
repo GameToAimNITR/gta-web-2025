@@ -48,6 +48,9 @@ const BioIDTerminal = () => {
             onClick={handleClick}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
+            role="button"
+            tabIndex={0}
+            aria-label="Activate Bio-ID Scanner"
           >
             <svg
                 xmlns="http://www.w3.org/2000/svg"

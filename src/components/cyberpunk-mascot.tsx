@@ -10,7 +10,6 @@ import type { Group, Mesh, PointLight } from 'three';
 const sectionMessages: Record<string, string> = {
   about: 'Scanning core identity... We are creators, innovators, and dreamers, pushing the boundaries of interactive entertainment.',
   games: 'Accessing game archives... These are the worlds we have built. Each one a testament to our passion.',
-  events: 'Event timeline synchronized... Mark your calendars for our upcoming jams, workshops, and showcases.',
   achievements: 'Compiling Hall of Fame... Celebrating the milestones and legendary feats of our members.',
   contact: 'Establishing secure connection... Ready to interface. Send us your transmission.',
 };
@@ -19,7 +18,6 @@ const sectionMessages: Record<string, string> = {
 const sectionPositions: Record<string, React.CSSProperties> = {
   about: { top: '50vh', left: 'calc(100vw - 12rem - 4vw)', transform: 'translateY(-50%)' },
   games: { top: '12rem', left: '4vw' },
-  events: { top: '30vh', left: 'calc(100vw - 12rem - 8vw)' },
   achievements: { top: 'calc(100vh - 20rem)', left: '5vw' },
   contact: { top: '15rem', left: 'calc(100vw - 12rem - 6vw)' },
 };

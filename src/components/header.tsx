@@ -13,28 +13,22 @@ import {
 } from '@/components/ui/sheet';
 import {
   Menu,
-  Gamepad2,
-  Brain,
-  Info,
   Joystick,
   Component,
   Trophy,
   Users,
   Send,
-  FileText,
+  Info
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useLenis } from '@studio-freight/react-lenis';
-// import type { ElementType } from 'react';
 import type { ComponentType } from 'react';
-import { useRouter } from 'next/navigation';
 
 interface NavLink {
   href: string;
   label: string;
-  // Icon: ElementType;
   Icon: ComponentType<{ className?: string }>;
   isExternal?: boolean;
 }
@@ -42,7 +36,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: '/#about', label: 'About', Icon: Info },
   { href: '/#games', label: 'Games', Icon: Joystick },
-  { href: '/#showcase', label: 'Showcase', Icon: Component },
+  { href: '/showcase', label: 'Showcase', Icon: Component },
   { href: '/#achievements', label: 'Achievements', Icon: Trophy },
   { href: '/#contact', label: 'Contact', Icon: Send },
   { href: '/#member-access', label: 'Members', Icon: Users },
@@ -53,8 +47,6 @@ export default function Header() {
   const pathname = usePathname();
   const [activeLink, setActiveLink] = useState('');
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const isNavigatingRef = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lenis = useLenis();
   const navRef = useRef<HTMLElement>(null);
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0, opacity: 0 });
@@ -76,19 +68,20 @@ export default function Header() {
 
   // Effect for setting active link based on scroll/path
   useEffect(() => {
-    if (pathname !== '/') {
-      setActiveLink(pathname);
-      return;
+    const isHomePage = pathname === '/';
+    
+    if (!isHomePage) {
+        const matchingLink = navLinks.find(link => pathname.startsWith(link.href));
+        setActiveLink(matchingLink?.href || pathname);
+        return;
     }
 
     const handleScroll = () => {
-        if (isNavigatingRef.current) return;
-
         const scrollPosition = (lenis?.scroll || 0) + window.innerHeight / 2;
         let currentSectionId = '';
 
         const sections = navLinks
-          .map(link => document.getElementById(link.href.substring(2)))
+          .map(link => link.href.startsWith('/#') ? document.getElementById(link.href.substring(2)) : null)
           .filter(Boolean) as HTMLElement[];
 
         for (const section of sections) {
@@ -96,33 +89,23 @@ export default function Header() {
                 currentSectionId = '/#' + section.id;
             }
         }
-
-        // Handle hero section edge case
-        if ((lenis?.scroll || 0) < window.innerHeight / 2) {
-          currentSectionId = '/#about'; // Or a dedicated hero link
-        }
-
+        
         setActiveLink(currentSectionId);
     };
 
-    if (lenis) {
+    if (lenis && isHomePage) {
         lenis.on('scroll', handleScroll);
+        handleScroll(); // Set initial state
     }
-
-    // Set initial state
-    handleScroll();
 
     return () => {
       if (lenis) {
         lenis.off('scroll', handleScroll);
       }
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
     };
   }, [pathname, lenis]);
 
-  const handleNavLinkClick = (e: React.MouseEvent, href: string, isExternal = false) => {
+  const handleNavLinkClick = (e: React.MouseEvent, href: string) => {
     if (isSheetOpen) setIsSheetOpen(false);
 
     if (href.startsWith('/#') && pathname === '/') {
@@ -134,40 +117,27 @@ export default function Header() {
       lenis?.scrollTo(targetId, {
         offset: -80,
         duration: 1.5,
-        onComplete: () => {
-          isNavigatingRef.current = false;
-        }
       });
-
-      isNavigatingRef.current = true;
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => { isNavigatingRef.current = false; }, 1500);
-
-      // Immediately set active link on click for better responsiveness
       setActiveLink(href);
-    } else if (!isExternal) {
-        // Normal Next.js navigation for other internal pages
-        router.push(href);
+    } else if (href.startsWith('/#')) {
+        e.preventDefault();
+        router.push(`/${href}`);
     }
   };
 
-  const NavLinkComponent = ({ href, label, Icon, isMobile = false, isExternal = false }: NavLink & { isMobile?: boolean }) => {
-    const isActive = pathname.startsWith(href) && href !== '/';
-    const isHomepageHashLink = activeLink === href && pathname === '/';
-    const finalIsActive = isActive || isHomepageHashLink;
-
-    const linkProps = {
-      "data-href": href,
-      onClick: (e: React.MouseEvent) => handleNavLinkClick(e, href, isExternal),
-      className: cn(
-        isMobile ? 'flex items-center gap-3 text-lg font-semibold' : 'cyber-nav-link',
-        finalIsActive && !isMobile && 'text-primary-foreground'
-      ),
-      ...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })
-    };
+  const NavLinkComponent = ({ href, label, Icon, isMobile = false }: NavLink & { isMobile?: boolean }) => {
+    const finalIsActive = activeLink === href;
 
     return (
-      <Link href={href} {...linkProps}>
+      <Link 
+        href={href}
+        data-href={href}
+        onClick={(e) => handleNavLinkClick(e, href)}
+        className={cn(
+            isMobile ? 'flex items-center gap-3 text-lg font-semibold' : 'cyber-nav-link',
+            finalIsActive && !isMobile && 'text-primary-foreground'
+        )}
+      >
         <Icon className={cn("h-4 w-4 transition-colors group-hover:text-primary", finalIsActive ? 'text-primary-foreground' : 'text-muted-foreground')} />
         <span className="nav-link-text">{label}</span>
       </Link>

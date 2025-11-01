@@ -20,7 +20,6 @@ const ITEMS_PER_PAGE = 4;
 export default function ShowcaseSection() {
   const [selectedModel, setSelectedModel] = useState<ModelInfo>(models[0]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   const totalPages = Math.ceil(models.length / ITEMS_PER_PAGE);
   const startIndex = currentPage * ITEMS_PER_PAGE;
@@ -28,13 +27,8 @@ export default function ShowcaseSection() {
   const currentModels = models.slice(startIndex, endIndex);
 
   const handlePageChange = (newPage: number) => {
-    if (newPage < 0 || newPage >= totalPages || isAnimating) return;
-
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentPage(newPage);
-      setIsAnimating(false);
-    }, 300); // Animation duration
+    if (newPage < 0 || newPage >= totalPages) return;
+    setCurrentPage(newPage);
   };
 
   const getIcon = (geometry: ModelInfo['fallback']['geometry']) => {
@@ -64,10 +58,7 @@ export default function ShowcaseSection() {
              <h3 className="text-2xl font-bold text-primary">Select Asset</h3>
             <div className="relative h-[450px] overflow-hidden">
                 <div
-                    className={cn(
-                        "transition-all duration-300 ease-in-out space-y-4",
-                        isAnimating ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0"
-                    )}
+                    className={"transition-all duration-300 ease-in-out space-y-4"}
                 >
                     {currentModels.map((model) => (
                     <Button
@@ -98,7 +89,7 @@ export default function ShowcaseSection() {
                 variant="outline"
                 size="icon"
                 onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 0 || isAnimating}
+                disabled={currentPage === 0}
                 className="border-accent/30 hover:bg-accent/20 disabled:opacity-50"
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -110,7 +101,7 @@ export default function ShowcaseSection() {
                 variant="outline"
                 size="icon"
                 onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages - 1 || isAnimating}
+                disabled={currentPage === totalPages - 1}
                 className="border-accent/30 hover:bg-accent/20 disabled:opacity-50"
               >
                 <ArrowRight className="w-5 h-5" />

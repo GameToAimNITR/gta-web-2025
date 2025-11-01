@@ -8,7 +8,7 @@ import type { ModelInfo } from '@/lib/modelInfo';
 import { Button } from './ui/button';
 import { Slider } from './ui/slider';
 import { Skeleton } from './ui/skeleton';
-import { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
+import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import {
   ArrowUp,
   ArrowDown,
@@ -17,7 +17,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from 'lucide-react';
-import { MathUtils, Vector3 } from 'three';
+import { Vector3 } from 'three';
 
 
 function FallbackModel({ model }: { model: ModelInfo }) {
@@ -61,7 +61,6 @@ function SceneUpdater({
   setZoom,
   isInteracting,
 }: {
-  // controlsRef: React.RefObject<OrbitControlsImpl>;
   controlsRef: React.RefObject<OrbitControlsImpl | null>;
   setZoom: (zoom: number) => void;
   isInteracting: boolean;

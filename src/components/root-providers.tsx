@@ -1,3 +1,4 @@
+
 'use client';
 
 import { AnimationProvider } from '@/context/animation-context';

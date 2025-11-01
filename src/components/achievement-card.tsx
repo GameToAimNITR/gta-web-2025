@@ -46,16 +46,17 @@ const AnimatedCounter = ({ value }: { value: number }) => {
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if(ref.current) {
-        observer.unobserve(ref.current)
+      if(currentRef) {
+        observer.unobserve(currentRef)
       }
     };
-  }, [value, ref]);
+  }, [value]);
 
   return <span ref={ref}>{count.toLocaleString()}</span>;
 };
