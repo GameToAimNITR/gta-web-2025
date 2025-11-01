@@ -32,16 +32,6 @@ export const models: ModelInfo[] = [
     },
   },
   {
-    id: 'modern-building',
-    name: 'Modern Building',
-    description: 'A sleek, contemporary architectural structure symbolizing urban innovation.',
-    url: 'https://cdn.jsdelivr.net/gh/GameToAimNITR/GameToAimNITR.github.io/public/models/Building_Model.glb',
-    fallback: {
-      geometry: 'box',
-      color: '#95a5a6', // gray
-    },
-  },
-  {
     id: 'stand-by-me-doraemon',
     name: 'Stand by me Doraemon!',
     description: 'A wave to childhood nostalgia!',
