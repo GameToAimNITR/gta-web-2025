@@ -123,7 +123,7 @@ export default function ModelViewer({ model }: { model: ModelInfo }) {
   const handleZoomChange = (newZoomValue: number[]) => {
     const newZoom = newZoomValue[0];
     const controls = controlsRef.current;
-    if (controls) {
+    if (controls && newZoom !== undefined) {
       const maxDistance = 7;
       const minDistance = 0.7;
       const newDistance = minDistance + (1 - newZoom / 100) * (maxDistance - minDistance);
