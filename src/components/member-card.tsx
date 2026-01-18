@@ -35,6 +35,8 @@ export default function MemberCard({ member, index }: MemberCardProps) {
                 alt={member.name}
                 fill
                 sizes="96px"
+                loading="lazy"
+                quality={85}
                 className="object-cover rounded-full p-2"
                 data-ai-hint={member.aiHint}
               />

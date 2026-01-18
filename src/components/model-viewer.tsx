@@ -144,7 +144,16 @@ export default function ModelViewer({ model }: { model: ModelInfo }) {
 
   return (
     <div className="relative w-full h-[500px] rounded-lg border-2 border-primary/30 bg-card box-glow-primary overflow-hidden">
-      <Canvas dpr={[1, 2]} camera={{ position: [0, 1, 8], fov: 45 }} key={model.id}>
+      <Canvas 
+        dpr={[1, 1.5]} 
+        camera={{ position: [0, 1, 8], fov: 45 }} 
+        key={model.id}
+        performance={{ min: 0.5 }}
+        gl={{ 
+          antialias: false,
+          powerPreference: 'high-performance'
+        }}
+      >
         <ambientLight intensity={3.5} />
         <directionalLight position={[10, 10, 5]} intensity={2} />
         {model?.fallback?.color && (

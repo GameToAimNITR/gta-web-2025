@@ -51,8 +51,8 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="contact" className="py-16 md:py-24 flex items-center justify-center min-h-screen parallax-section">
-      <div className={cn("terminal-container", { "is-active": isVisible })}>
+    <section ref={sectionRef} id="contact" className="py-12 md:py-16 lg:py-24 px-4 flex items-center justify-center min-h-screen parallax-section">
+      <div className={cn("terminal-container w-full max-w-5xl", { "is-active": isVisible })}>
         <div className="terminal-header">
           <div className="flex gap-1.5">
             <span className="h-3 w-3 rounded-full bg-red-500"></span>

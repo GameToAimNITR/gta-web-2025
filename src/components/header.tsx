@@ -33,7 +33,6 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: '/#about', label: 'About', Icon: Info },
   { href: '/#games', label: 'Games', Icon: Joystick },
-  { href: '/#showcase', label: 'Showcase', Icon: Component },
   { href: '/#achievements', label: 'Achievements', Icon: Trophy },
   { href: '/#member-access', label: 'Members', Icon: Users },
   { href: '/#contact', label: 'Contact', Icon: Send },
@@ -125,14 +124,38 @@ export default function Header() {
   const NavLinkComponent = ({ href, label, Icon, isMobile = false }: NavLink & { isMobile?: boolean }) => {
     const finalIsActive = activeLink === href;
 
+    if (isMobile) {
+      return (
+        <Link 
+          href={href}
+          data-href={href}
+          onClick={(e) => handleNavLinkClick(e, href)}
+          className={cn(
+            'flex items-center gap-4 px-4 py-3 rounded-lg transition-all duration-200',
+            'hover:bg-primary/10 hover:border-l-2 hover:border-primary',
+            finalIsActive && 'bg-primary/20 border-l-2 border-primary'
+          )}
+        >
+          <Icon className={cn(
+            "h-5 w-5 transition-colors",
+            finalIsActive ? 'text-primary' : 'text-muted-foreground'
+          )} />
+          <span className={cn(
+            "text-lg font-semibold transition-colors",
+            finalIsActive ? 'text-primary' : 'text-foreground'
+          )}>{label}</span>
+        </Link>
+      );
+    }
+
     return (
       <Link 
         href={href}
         data-href={href}
         onClick={(e) => handleNavLinkClick(e, href)}
         className={cn(
-            isMobile ? 'flex items-center gap-3 text-lg font-semibold' : 'cyber-nav-link',
-            finalIsActive && !isMobile && 'text-primary-foreground'
+            'cyber-nav-link',
+            finalIsActive && 'text-primary-foreground'
         )}
       >
         <Icon className={cn("h-4 w-4 transition-colors group-hover:text-primary", finalIsActive ? 'text-primary-foreground' : 'text-muted-foreground')} />
@@ -173,9 +196,27 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px] cyber-header border-l-border/60">
               <div className="flex flex-col h-full">
-                <nav className="flex-1 space-y-4 pt-6">
-                  {navLinks.map((link) => (
-                    <NavLinkComponent key={`${link.href}-mobile`} {...link} isMobile />
+                <div className="mb-6 pb-4 border-b border-border/40">
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src="/GTALogo.svg"
+                      alt="GTA Logo"
+                      width={32}
+                      height={32}
+                    />
+                    <span className="font-bold text-lg tracking-wider">GAME TO AIM</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2">Navigation Menu</p>
+                </div>
+                <nav className="flex-1 space-y-2 pt-2">
+                  {navLinks.map((link, index) => (
+                    <div
+                      key={`${link.href}-mobile`}
+                      className="animate-entry animate-slide-in-left is-visible"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <NavLinkComponent {...link} isMobile />
+                    </div>
                   ))}
                 </nav>
               </div>

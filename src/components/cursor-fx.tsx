@@ -12,6 +12,8 @@ export default function CursorFX() {
   const [isHidden, setIsHidden] = useState(false);
   const [isShooting, setIsShooting] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | undefined>(undefined);
+  const lastPosRef = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     // Check for touch device on mount to disable the cursor
@@ -22,7 +24,15 @@ export default function CursorFX() {
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      lastPosRef.current = { x: e.clientX, y: e.clientY };
+      
+      // Throttle updates using requestAnimationFrame
+      if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(() => {
+          setPosition(lastPosRef.current);
+          rafRef.current = undefined;
+        });
+      }
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -66,6 +76,9 @@ export default function CursorFX() {
     document.addEventListener('mouseup', handleMouseUp);
 
     return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);

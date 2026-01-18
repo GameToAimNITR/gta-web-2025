@@ -111,9 +111,9 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-16 md:py-24 parallax-section">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+    <section id="about" ref={sectionRef} className="py-12 md:py-16 lg:py-24 px-4 parallax-section">
+      <div className="container mx-auto relative z-10">
+        <div className="text-center mb-12 md:mb-16">
           <h2
             className={cn(
               'text-4xl md:text-5xl font-bold text-glow-accent animate-entry animate-slide-up-fade',

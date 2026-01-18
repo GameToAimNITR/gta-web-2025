@@ -16,29 +16,35 @@ interface AchievementCardProps {
 const AnimatedCounter = ({ value }: { value: number }) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry && entry.isIntersecting) {
+        if (entry && entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
           let start = 0;
           const end = value;
           if (start === end) {
             setCount(end);
             return;
           }
-          const duration = 1000;
-          const increment = end / (duration / 16);
+          const duration = 800; // Reduced from 1000ms
+          const steps = 20; // Reduced from continuous updates
+          const increment = end / steps;
+          const stepDuration = duration / steps;
           
+          let currentStep = 0;
           const timer = setInterval(() => {
+            currentStep++;
             start += increment;
-            if (start >= end) {
+            if (currentStep >= steps) {
               setCount(end);
               clearInterval(timer);
             } else {
               setCount(Math.ceil(start));
             }
-          }, 16);
+          }, stepDuration);
           
           observer.disconnect();
         }
@@ -97,6 +103,8 @@ export default function AchievementCard({ achievement, onCardClick }: Achievemen
             alt={achievement.title}
             fill={true}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
+            quality={85}
             className="object-cover transition-transform duration-500 group-hover:scale-110"
             data-ai-hint={achievement.aiHint}
           />

@@ -15,7 +15,7 @@ const FresnelMaterial = shaderMaterial(
     uBaseColor: new Color('#1A0033'), // Dark purple/blue base
     uRimStrength: 2.5,
     uRimPower: 3.0,
-    uOpacity: 0.0, // Start with 0 opacity
+    uOpacity: 1.0, // Start visible
   },
   // Vertex Shader
   `
@@ -70,33 +70,24 @@ function VrHeadset() {
     });
   }, [scene, fresnelMaterial]);
 
-  useFrame((state) => {
-    if (groupRef.current) {
-      // Animate opacity based on scroll position
-      const scrollY = window.scrollY || 0;
-      const fadeInEnd = 400; // Fade in over first 400px of scroll
-      const targetOpacity = Math.min(scrollY / fadeInEnd, 1.0);
-
-      if (fresnelMaterial.uniforms.uOpacity) {
-        // Smoothly interpolate to the target opacity
-        fresnelMaterial.uniforms.uOpacity.value = MathUtils.lerp(
-          fresnelMaterial.uniforms.uOpacity.value,
-          targetOpacity,
-          0.05
-        );
-      }
-      
-      const scrollHeight = document.body.scrollHeight - window.innerHeight;
-      if (scrollHeight > 0) {
-        const scrollProgress = scrollY / scrollHeight;
+  useFrame((state, delta) => {
+    if (groupRef.current && delta < 0.1) {
+      // Throttle scroll updates - only update every 3rd frame
+      if (state.clock.elapsedTime % 0.05 < delta) {
+        const scrollY = window.scrollY || 0;
         
-        const targetRotationX = scrollProgress * (Math.PI / 2);
-        const targetRotationY = Math.sin(scrollProgress * Math.PI) * 1.75;
-        const targetRotationZ = Math.sin(scrollProgress * Math.PI * 2) * 0.25;
-        
-        groupRef.current.rotation.x = MathUtils.lerp(groupRef.current.rotation.x, targetRotationX, 0.1);
-        groupRef.current.rotation.y = MathUtils.lerp(groupRef.current.rotation.y, targetRotationY, 0.1);
-        groupRef.current.rotation.z = MathUtils.lerp(groupRef.current.rotation.z, targetRotationZ, 0.1);
+        const scrollHeight = document.body.scrollHeight - window.innerHeight;
+        if (scrollHeight > 0) {
+          const scrollProgress = scrollY / scrollHeight;
+          
+          const targetRotationX = scrollProgress * (Math.PI / 2);
+          const targetRotationY = Math.sin(scrollProgress * Math.PI) * 1.75;
+          const targetRotationZ = Math.sin(scrollProgress * Math.PI * 2) * 0.25;
+          
+          groupRef.current.rotation.x = MathUtils.lerp(groupRef.current.rotation.x, targetRotationX, 0.1);
+          groupRef.current.rotation.y = MathUtils.lerp(groupRef.current.rotation.y, targetRotationY, 0.1);
+          groupRef.current.rotation.z = MathUtils.lerp(groupRef.current.rotation.z, targetRotationZ, 0.1);
+        }
       }
       
       groupRef.current.position.y = Math.sin(state.clock.getElapsedTime() * 0.5) * 0.1;
@@ -119,13 +110,20 @@ export default function BackgroundFX() {
         left: 0, 
         width: '100%', 
         height: '100vh', 
-        zIndex: -1,
+        zIndex: 0,
         maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
         WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
         pointerEvents: 'none'
       }}
     >
-      <Canvas>
+      <Canvas
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5 }}
+        gl={{ 
+          antialias: false,
+          powerPreference: 'high-performance'
+        }}
+      >
         <Suspense fallback={null}>
           <VrHeadset />
         </Suspense>

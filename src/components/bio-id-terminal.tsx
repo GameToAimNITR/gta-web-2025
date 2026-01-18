@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const BioIDTerminal = () => {
   const [scanning, setScanning] = useState(false);
@@ -38,17 +39,26 @@ const BioIDTerminal = () => {
   };
 
   return (
+    <TooltipProvider>
       <div className="flex flex-col md:flex-row gap-4 items-center bg-background/80 backdrop-blur-sm p-3 md:p-4 rounded-lg border border-primary/30 box-glow-primary w-full max-w-4xl mx-auto">
         <div className="relative w-48 md:w-56 flex-shrink-0 flex flex-col items-center gap-2">
-          <div
-            className="bio-id-scanner group"
-            onClick={handleClick}
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
-            role="button"
-            tabIndex={0}
-            aria-label="Bio-ID Scanner"
-          >
+          <Tooltip delayDuration={300}>
+            <TooltipTrigger asChild>
+              <div
+                className="bio-id-scanner group"
+                onClick={handleClick}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleClick();
+                  }
+                }}
+                onMouseEnter={() => setHovering(true)}
+                onMouseLeave={() => setHovering(false)}
+                role="button"
+                tabIndex={0}
+                aria-label="Bio-ID Scanner - Click to scan or access members"
+              >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 200 200"
@@ -175,6 +185,13 @@ const BioIDTerminal = () => {
                 )}
               </svg>
           </div>
+          </TooltipTrigger>
+          <TooltipContent side="bottom" className="bg-card/95 backdrop-blur-sm">
+            <p className="font-code text-xs">
+              {accessGranted ? 'Click to access member database' : 'Click to initiate bio-scan'}
+            </p>
+          </TooltipContent>
+        </Tooltip>
           {!scanning && !accessGranted && (
             <div className="text-accent text-xs font-code whitespace-nowrap text-glow-accent animate-pulse">
               CLICK TO SCAN
@@ -254,6 +271,7 @@ const BioIDTerminal = () => {
           </div>
         </div>
       </div>
+    </TooltipProvider>
   );
 };
 

@@ -1276,7 +1276,55 @@
     box-shadow:
       0 0 15px hsl(var(--accent)),
       0 0 30px hsl(var(--accent));
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  .contact-card-button:active {
+    transform: translateY(-2px) scale(1.01);
+  }
+}
+
+/* Micro-interactions */
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+  }
+
+  .button-press {
+    @apply active:scale-95 transition-transform duration-100;
+  }
+
+  .smooth-hover {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
+
+/* Focus States for Accessibility */
+@layer base {
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Better button active states */
+  button:active {
+    transform: scale(0.98);
+  }
+
+  /* Skip to content link for keyboard users */
+  .skip-to-content {
+    @apply absolute left-1/2 -translate-x-1/2 -top-full z-[100] bg-primary text-primary-foreground px-4 py-2 rounded-b-md;
+    @apply focus:top-0 transition-all;
   }
 }
 

@@ -9,12 +9,16 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-space-grotesk',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 const orbitron = Orbitron({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-orbitron',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 const vt323 = VT323({
@@ -22,6 +26,8 @@ const vt323 = VT323({
   weight: '400',
   display: 'swap',
   variable: '--font-vt323',
+  preload: false, // Less critical font
+  fallback: ['monospace'],
 });
 
 const title = 'Game To Aim | NIT Rourkela Game Development Club';

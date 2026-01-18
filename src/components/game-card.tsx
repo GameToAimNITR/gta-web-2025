@@ -47,13 +47,17 @@ export default function GameCard({ game, isVisible, index, onMouseEnter, onClick
     <div
       onMouseEnter={onMouseEnter}
       onClick={() => onClick(game)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick(game);
+        }
+      }}
       className={cn(
         "relative w-full group h-full game-card-clickable",
-        'transition-all duration-300 ease-in-out',
+        'transition-all duration-150 ease-in-out',
         getTransformOrigin(index),
         !isVisible || !isMounted ? 'scale-y-0 opacity-0' : 'scale-y-100 opacity-100',
-        isHovered && 'scale-105 z-10',
-        isDimmed && 'scale-90 opacity-50',
       )}
       style={{ transitionDelay: `${index * 30}ms` }}
       role="button"
@@ -62,7 +66,7 @@ export default function GameCard({ game, isVisible, index, onMouseEnter, onClick
     >
       <Card
         className={cn(
-            "h-full w-full overflow-hidden border-primary/20 transition-all duration-300 group-hover:border-primary group-hover:box-glow-primary flex flex-col",
+            "h-full w-full overflow-hidden border-primary/20 transition-all duration-150 group-hover:border-primary flex flex-col",
             isVisible ? "opacity-100" : "opacity-0"
         )}
         style={{ transitionDelay: `${(index * 30) + 100}ms`}}
@@ -74,13 +78,15 @@ export default function GameCard({ game, isVisible, index, onMouseEnter, onClick
               alt={game.title}
               fill
               sizes="(max-width: 768px) 50vw, 20vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              quality={85}
+              className="object-cover transition-transform duration-200 group-hover:scale-105"
               data-ai-hint={game.aiHint}
             />
           </div>
         </CardHeader>
         <CardContent className="p-4 flex-1 flex flex-col justify-center">
-            <h3 className="font-bold text-lg md:text-xl text-primary text-glow-primary transition-all duration-300 group-hover:text-accent">
+            <h3 className="font-bold text-lg md:text-xl text-primary text-glow-primary transition-all duration-150 group-hover:text-accent">
                 {game.title}
             </h3>
             <p className="text-muted-foreground mt-2 text-sm">

@@ -1,16 +1,39 @@
 
 'use client';
 
+import dynamic from 'next/dynamic';
 import HeroSection from '@/components/sections/hero';
-import AboutSection from '@/components/sections/about';
-import AchievementsSection from '@/components/sections/achievements';
-import ContactSection from '@/components/sections/contact';
-import GamesSection from '@/components/sections/games';
 import HackerOverlay from '@/components/hacker-overlay';
 import { useAnimation } from '@/context/animation-context';
-import BioIDTerminal from '@/components/bio-id-terminal';
-import ShowcaseSection from '@/components/sections/showcase';
 import OrganizationSchema from '@/components/page-specific/organization-schema';
+import { SectionSkeleton } from '@/components/loading-skeletons';
+
+// Lazy load non-critical sections
+const AboutSection = dynamic(() => import('@/components/sections/about'), {
+  loading: () => <SectionSkeleton />,
+});
+
+const GamesSection = dynamic(() => import('@/components/sections/games'), {
+  loading: () => <SectionSkeleton />,
+});
+
+// const ShowcaseSection = dynamic(() => import('@/components/sections/showcase'), {
+//   loading: () => <SectionSkeleton />,
+//   ssr: false,
+// });
+
+const AchievementsSection = dynamic(() => import('@/components/sections/achievements'), {
+  loading: () => <SectionSkeleton />,
+});
+
+const ContactSection = dynamic(() => import('@/components/sections/contact'), {
+  loading: () => <SectionSkeleton />,
+});
+
+const BioIDTerminal = dynamic(() => import('@/components/bio-id-terminal'), {
+  loading: () => <SectionSkeleton />,
+  ssr: false,
+});
 
 export default function Home() {
   const { sequenceComplete } = useAnimation();
@@ -22,7 +45,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <GamesSection />
-      <ShowcaseSection />
+      {/* <ShowcaseSection /> */}
       <AchievementsSection />
       <ContactSection />
       <section id="member-access" className="py-24">

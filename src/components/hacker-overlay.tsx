@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import Typewriter from '@/components/typewriter';
 import { useAnimation } from '@/context/animation-context';
@@ -19,6 +19,17 @@ export default function HackerOverlay() {
   const { setSequenceState, setSequenceComplete, sequenceComplete } = useAnimation();
   const [currentStep, setCurrentStep] = useState(0);
   const [isFadingOut, setIsFadingOut] = useState(false);
+
+  // Memoize displayed lines to prevent unnecessary recalculations
+  const displayedLines = useMemo(() => 
+    sequence.slice(0, currentStep),
+    [currentStep]
+  );
+  
+  const staticTextForGlitch = useMemo(() => 
+    displayedLines.map(line => line.text).join('\n'),
+    [displayedLines]
+  );
 
   useEffect(() => {
     // Immediately update the context with the current step.
@@ -41,9 +52,6 @@ export default function HackerOverlay() {
 
     return () => clearTimeout(timer);
   }, [currentStep, setSequenceState, setSequenceComplete]);
-  
-  const displayedLines = sequence.slice(0, currentStep);
-  const staticTextForGlitch = displayedLines.map(line => line.text).join('\n');
 
   if (sequenceComplete) return null;
 
