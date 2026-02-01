@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { useLenis } from '@studio-freight/react-lenis';
+import { useLenis } from 'lenis/react';
 import { Button } from '@/components/ui/button';
 import MemberCard from '@/components/member-card';
 import { members, years } from '@/lib/members';

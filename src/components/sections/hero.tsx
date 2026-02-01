@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useLenis } from '@studio-freight/react-lenis';
+import { useLenis } from 'lenis/react';
 import { Gamepad2, Component, UserPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Cybertype from '@/components/cybertype';

@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Users, Code, Gamepad2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useLenis } from '@studio-freight/react-lenis';
+import { useLenis } from 'lenis/react';
 import { useRouter } from 'next/navigation';
 
 export default function GamesSection() {
