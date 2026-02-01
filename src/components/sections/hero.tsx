@@ -3,13 +3,13 @@
 
 import { useState } from 'react';
 import { useLenis } from 'lenis/react';
-import { Gamepad2, Component, UserPlus } from 'lucide-react';
+import { Gamepad2, Trophy, UserPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Cybertype from '@/components/cybertype';
 import HeroBackground from '@/components/hero-background';
 
 export default function HeroSection() {
-  const buttons = ['games', 'showcase', 'join'] as const;
+  const buttons = ['games', 'achievements', 'join'] as const;
   type SelectedButton = (typeof buttons)[number];
 
   const [selectedButton, setSelectedButton] = useState<SelectedButton>('games');
@@ -30,7 +30,7 @@ export default function HeroSection() {
 
   const buttonData = [
     { id: 'games', label: 'Explore Games', icon: <Gamepad2 />, target: '#games' },
-    { id: 'showcase', label: 'Explore Showcase', icon: <Component />, target: '#showcase' },
+    { id: 'achievements', label: 'Achievements', icon: <Trophy />, target: '#achievements' },
     { id: 'join', label: 'Join Us', icon: <UserPlus />, target: '#contact' },
   ];
 
