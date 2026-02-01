@@ -1340,3 +1340,103 @@
 .animate-spin-slow {
   animation: spin-slow 10s linear infinite;
 }
+
+/* Custom Scrollbar Styles for Dialog */
+.dialog-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
+}
+
+.dialog-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* Cyber Section Box - Hero Inspired */
+.cyber-section-box {
+  position: relative;
+  background: linear-gradient(145deg, hsl(var(--primary) / 0.03), hsl(var(--accent) / 0.03));
+  padding: 1px;
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+  transition: all 0.3s ease-out;
+}
+
+.cyber-section-box:hover {
+  filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.3));
+}
+
+.cyber-section-box-border {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.4),
+    hsl(var(--accent) / 0.4)
+  );
+  clip-path: inherit;
+  opacity: 0.6;
+  transition: opacity 0.3s ease-out;
+}
+
+.cyber-section-box:hover .cyber-section-box-border {
+  opacity: 1;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.7),
+    hsl(var(--accent) / 0.7)
+  );
+}
+
+.cyber-section-box-content {
+  position: relative;
+  background: hsl(var(--card) / 0.95);
+  padding: 1rem;
+  clip-path: inherit;
+  height: 100%;
+}
+
+/* Game Modal Cyberpunk Scrollbar */
+.game-modal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.5) hsl(var(--card) / 0.3);
+}
+
+.game-modal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.game-modal-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--card) / 0.3);
+  border-left: 1px solid hsl(var(--primary) / 0.2);
+}
+
+.game-modal-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary) / 0.6),
+    hsl(var(--accent) / 0.6)
+  );
+  border-radius: 0;
+}
+
+.game-modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+}
