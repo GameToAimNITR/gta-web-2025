@@ -1,11 +1,12 @@
 
 'use client';
 
-import { Suspense, useRef, useEffect, useMemo } from 'react';
+import { Suspense, useRef, useEffect, useMemo, memo } from 'react';
 import { Canvas, useFrame, extend } from '@react-three/fiber';
 import { useGLTF, shaderMaterial } from '@react-three/drei';
 import type { Group, Mesh } from 'three';
 import { Color, MathUtils } from 'three';
+import { usePowerPerformance } from '@/hooks/use-power-performance';
 
 // Define the custom Fresnel shader material with an added opacity uniform
 const FresnelMaterial = shaderMaterial(
@@ -55,6 +56,21 @@ const FresnelMaterial = shaderMaterial(
 // Make the custom material available to JSX
 extend({ FresnelMaterial });
 
+// Cached scroll values to avoid DOM reads in useFrame
+let cachedScrollY = 0;
+let cachedScrollHeight = 1;
+
+if (typeof window !== 'undefined') {
+  const updateScrollCache = () => {
+    cachedScrollY = window.scrollY || 0;
+    cachedScrollHeight = Math.max(1, document.body.scrollHeight - window.innerHeight);
+  };
+  window.addEventListener('scroll', updateScrollCache, { passive: true });
+  // Initial
+  if (document.readyState !== 'loading') updateScrollCache();
+  else window.addEventListener('DOMContentLoaded', updateScrollCache);
+}
+
 // Model component that animates based on scroll
 function VrHeadset() {
   const groupRef = useRef<Group>(null);
@@ -72,22 +88,18 @@ function VrHeadset() {
 
   useFrame((state, delta) => {
     if (groupRef.current && delta < 0.1) {
-      // Throttle scroll updates - only update every 3rd frame
-      if (state.clock.elapsedTime % 0.05 < delta) {
-        const scrollY = window.scrollY || 0;
+      // Use cached scroll values instead of reading DOM every frame
+      const scrollHeight = cachedScrollHeight;
+      if (scrollHeight > 0) {
+        const scrollProgress = cachedScrollY / scrollHeight;
         
-        const scrollHeight = document.body.scrollHeight - window.innerHeight;
-        if (scrollHeight > 0) {
-          const scrollProgress = scrollY / scrollHeight;
-          
-          const targetRotationX = scrollProgress * (Math.PI / 2);
-          const targetRotationY = Math.sin(scrollProgress * Math.PI) * 1.75;
-          const targetRotationZ = Math.sin(scrollProgress * Math.PI * 2) * 0.25;
-          
-          groupRef.current.rotation.x = MathUtils.lerp(groupRef.current.rotation.x, targetRotationX, 0.1);
-          groupRef.current.rotation.y = MathUtils.lerp(groupRef.current.rotation.y, targetRotationY, 0.1);
-          groupRef.current.rotation.z = MathUtils.lerp(groupRef.current.rotation.z, targetRotationZ, 0.1);
-        }
+        const targetRotationX = scrollProgress * (Math.PI / 2);
+        const targetRotationY = Math.sin(scrollProgress * Math.PI) * 1.75;
+        const targetRotationZ = Math.sin(scrollProgress * Math.PI * 2) * 0.25;
+        
+        groupRef.current.rotation.x = MathUtils.lerp(groupRef.current.rotation.x, targetRotationX, 0.1);
+        groupRef.current.rotation.y = MathUtils.lerp(groupRef.current.rotation.y, targetRotationY, 0.1);
+        groupRef.current.rotation.z = MathUtils.lerp(groupRef.current.rotation.z, targetRotationZ, 0.1);
       }
       
       groupRef.current.position.y = Math.sin(state.clock.getElapsedTime() * 0.5) * 0.1;
@@ -101,7 +113,12 @@ function VrHeadset() {
   );
 }
 
-export default function BackgroundFX() {
+function BackgroundFX() {
+  const { enable3D, maxDPR, isPageVisible } = usePowerPerformance();
+
+  // Don't render 3D at all on low tier or hidden page
+  if (!enable3D) return null;
+
   return (
     <div 
       style={{ 
@@ -117,11 +134,15 @@ export default function BackgroundFX() {
       }}
     >
       <Canvas
-        dpr={[1, 1.5]}
-        performance={{ min: 0.5 }}
+        dpr={[1, maxDPR]}
+        performance={{ min: 0.3 }}
+        frameloop={isPageVisible ? 'always' : 'never'}
         gl={{ 
           antialias: false,
-          powerPreference: 'high-performance'
+          powerPreference: 'default',
+          // Don't block rendering on GPUs that report a caveat —
+          // the performance tier system handles graceful degradation
+          failIfMajorPerformanceCaveat: false,
         }}
       >
         <Suspense fallback={null}>
@@ -131,3 +152,5 @@ export default function BackgroundFX() {
     </div>
   );
 }
+
+export default memo(BackgroundFX);

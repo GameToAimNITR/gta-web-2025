@@ -55,12 +55,12 @@ export default function Header() {
         const { offsetLeft, offsetWidth } = activeLinkElement;
         setUnderlineStyle({ left: offsetLeft, width: offsetWidth, opacity: 1 });
       } else {
-        setUnderlineStyle({ ...underlineStyle, opacity: 0 });
+        setUnderlineStyle(prev => ({ ...prev, opacity: 0 }));
       }
     } else {
-      setUnderlineStyle({ ...underlineStyle, opacity: 0 });
+      setUnderlineStyle(prev => ({ ...prev, opacity: 0 }));
     }
-  }, [activeLink, navRef, pathname]);
+  }, [activeLink, pathname]);
 
   // Effect for setting active link based on scroll/path
   useEffect(() => {

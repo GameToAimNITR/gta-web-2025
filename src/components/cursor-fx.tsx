@@ -1,19 +1,18 @@
 
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { cn } from '@/lib/utils';
+import { usePowerPerformance } from '@/hooks/use-power-performance';
 
 export default function CursorFX() {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isPointer, setIsPointer] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isShooting, setIsShooting] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number | undefined>(undefined);
-  const lastPosRef = useRef({ x: -100, y: -100 });
+  const { enableCursor } = usePowerPerformance();
 
   useEffect(() => {
     // Check for touch device on mount to disable the cursor
@@ -23,15 +22,11 @@ export default function CursorFX() {
       return;
     }
 
+    // Use direct DOM transform instead of React state to avoid re-renders
     const handleMouseMove = (e: MouseEvent) => {
-      lastPosRef.current = { x: e.clientX, y: e.clientY };
-      
-      // Throttle updates using requestAnimationFrame
-      if (!rafRef.current) {
-        rafRef.current = requestAnimationFrame(() => {
-          setPosition(lastPosRef.current);
-          rafRef.current = undefined;
-        });
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${e.clientX}px`;
+        cursorRef.current.style.top = `${e.clientY}px`;
       }
     };
 
@@ -67,7 +62,8 @@ export default function CursorFX() {
       el.addEventListener('animationend', handleAnimationEnd);
     }
 
-    document.addEventListener('mousemove', handleMouseMove);
+    // passive: true avoids blocking the main thread
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseout', handleMouseOut);
     document.body.addEventListener('mouseleave', handleMouseLeave);
@@ -76,9 +72,6 @@ export default function CursorFX() {
     document.addEventListener('mouseup', handleMouseUp);
 
     return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
@@ -92,7 +85,7 @@ export default function CursorFX() {
     };
   }, []);
 
-  if (isTouchDevice) {
+  if (isTouchDevice || !enableCursor) {
     return null;
   }
 
@@ -108,7 +101,7 @@ export default function CursorFX() {
           'is-shooting': isShooting
         }
       )}
-      style={{ left: `${position.x}px`, top: `${position.y}px` }}
+      style={{ left: '-100px', top: '-100px', willChange: 'left, top' }}
     />
   );
 }

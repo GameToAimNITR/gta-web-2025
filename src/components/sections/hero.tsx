@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useLenis } from 'lenis/react';
 import { Gamepad2, Trophy, UserPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -15,8 +16,15 @@ export default function HeroSection() {
   const [selectedButton, setSelectedButton] = useState<SelectedButton>('games');
 
   const lenis = useLenis();
+  const router = useRouter();
 
   const handleNavigation = (targetId: string) => {
+    // Route to /games page for the Explore Games button
+    if (targetId === '/games') {
+      router.push('/games');
+      return;
+    }
+
     document.body.classList.add('is-nav-scrolling');
     setTimeout(() => {
       document.body.classList.remove('is-nav-scrolling');
@@ -29,15 +37,15 @@ export default function HeroSection() {
   };
 
   const buttonData = [
-    { id: 'games', label: 'Explore Games', icon: <Gamepad2 />, target: '#games' },
+    { id: 'games', label: 'Explore Games', icon: <Gamepad2 />, target: '/games' },
     { id: 'achievements', label: 'Achievements', icon: <Trophy />, target: '#achievements' },
     { id: 'join', label: 'Join Us', icon: <UserPlus />, target: '#contact' },
   ];
 
   return (
-    <section id="hero" className="relative h-[100vh] w-full flex items-center justify-center text-center overflow-hidden">
+    <section id="hero" className="relative h-[100vh] w-full flex items-center justify-center text-center overflow-hidden isolate">
       <HeroBackground />
-      <div className="z-10 flex flex-col items-center p-4 relative">
+      <div className="z-10 flex flex-col items-center p-4 relative pointer-events-none">
         <div
           className={'animate-entry animate-slide-in-top is-visible'}
         >
@@ -61,23 +69,25 @@ export default function HeroSection() {
         <div
           className={'flex flex-col items-center gap-4 mt-12 transition-opacity duration-500 opacity-100'}
         >
-          <div className="flex flex-col sm:flex-row items-center gap-8">
+          <div className="flex flex-col sm:flex-row items-center gap-8 pointer-events-auto">
             {buttonData.map((btn, index) => (
               <div
                 key={btn.id}
-                className={cn('animate-entry is-visible',
+                className={cn('animate-entry is-visible pointer-events-auto',
                   index === 0 ? 'animate-slide-in-left' : index === 1 ? 'animate-fade-in' : 'animate-slide-in-right'
                 )}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <button
                   className={cn(
-                    'cyber-button group flex-shrink-0 button-press',
+                    'cyber-button group flex-shrink-0 button-press pointer-events-auto',
                     { 'is-selected': selectedButton === btn.id }
                   )}
                   onClick={() => handleNavigation(btn.target)}
                   onMouseEnter={() => setSelectedButton(btn.id as SelectedButton)}
+                  onTouchStart={() => setSelectedButton(btn.id as SelectedButton)}
                   aria-label={btn.label}
+                  type="button"
                 >
                   <div className="cyber-button-content">
                     {btn.icon}
@@ -88,6 +98,7 @@ export default function HeroSection() {
                 </button>
               </div>
             ))}
+
           </div>
           <div
             className={'animate-entry animate-fade-in is-visible'}

@@ -148,10 +148,11 @@ export default function ModelViewer({ model }: { model: ModelInfo }) {
         dpr={[1, 1.5]} 
         camera={{ position: [0, 1, 8], fov: 45 }} 
         key={model.id}
-        performance={{ min: 0.5 }}
+        performance={{ min: 0.3 }}
         gl={{ 
           antialias: false,
-          powerPreference: 'high-performance'
+          powerPreference: 'default',
+          failIfMajorPerformanceCaveat: true,
         }}
       >
         <ambientLight intensity={3.5} />

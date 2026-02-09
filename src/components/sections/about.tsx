@@ -10,29 +10,36 @@ import { useState, useEffect, useRef } from 'react';
 const AnimatedCounter = ({ value }: { value: number }) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry && entry.isIntersecting) {
-          let start = 0;
+        if (entry && entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
           const end = value;
-          if (start === end) {
+          if (end === 0) {
             setCount(end);
             return;
           }
-          const duration = 1000;
-          const increment = end / (duration / 16);
+          // Use 20 discrete steps instead of 60fps setInterval
+          const steps = 20;
+          const duration = 800;
+          const increment = end / steps;
+          const stepDuration = duration / steps;
+          let currentStep = 0;
+          let accumulated = 0;
 
           const timer = setInterval(() => {
-            start += increment;
-            if (start >= end) {
+            currentStep++;
+            accumulated += increment;
+            if (currentStep >= steps) {
               setCount(end);
               clearInterval(timer);
             } else {
-              setCount(Math.ceil(start));
+              setCount(Math.ceil(accumulated));
             }
-          }, 16);
+          }, stepDuration);
 
           observer.disconnect();
         }

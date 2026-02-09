@@ -307,8 +307,16 @@
       filter 0.3s ease-out,
       transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     outline: none;
-    cursor: none;
+    cursor: pointer;
     animation: cyber-glow-flicker 4s linear infinite;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .cyber-button {
+      cursor: none;
+    }
   }
 
   .cyber-button:hover {
@@ -337,6 +345,7 @@
     transition: all 0.2s ease-out;
     position: relative; /* For shimmer */
     overflow: hidden; /* For shimmer */
+    pointer-events: none; /* Let clicks pass through to button */
   }
 
   .cyber-button-content::after {
@@ -376,11 +385,13 @@
     z-index: 1;
     text-transform: uppercase;
     white-space: nowrap;
+    pointer-events: none; /* Let clicks pass through to button */
   }
 
   .cyber-button svg {
     z-index: 1;
     transition: all 0.3s ease-out;
+    pointer-events: none; /* Let clicks pass through to button */
   }
 
   .cyber-button:hover svg {
@@ -508,7 +519,8 @@
       transparent 1px
     );
     background-size: 30px 30px;
-    background-attachment: fixed;
+    /* Removed background-attachment: fixed — it forces full-page
+       repaints on every scroll frame and is GPU-expensive on battery */
     opacity: 0.5;
     z-index: 0;
   }
@@ -1439,4 +1451,108 @@
     hsl(var(--primary)),
     hsl(var(--accent))
   );
+}
+
+/* ========================================
+ * Reduced Motion & Power Saving
+ * Disables or simplifies all infinite/heavy
+ * animations when the OS or user requests it.
+ * ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  /* Kill all infinite CSS animations */
+  .glitch-layers::before,
+  .glitch-layers::after,
+  .animate-pulse,
+  .animate-spin-slow,
+  .animate-scan-line,
+  .animate-iris-pulse,
+  .animate-cyber-glow-flicker,
+  .animate-pan-medium,
+  .stars-bg,
+  .holographic-card-glow,
+  .holographic-card::before,
+  .hacker-overlay::before,
+  .hacker-overlay-content::before,
+  .hacker-overlay-content::after,
+  .cyber-button,
+  .terminal-caret,
+  .terminal-caret-inline {
+    animation: none !important;
+  }
+
+  /* Simplify transitions to instant */
+  .animate-entry {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animate-entry.animate-slide-in-top.is-visible,
+  .animate-entry.animate-slide-in-left.is-visible,
+  .animate-entry.animate-slide-in-right.is-visible,
+  .animate-entry.animate-fade-in.is-visible,
+  .animate-entry.animate-slide-up-fade.is-visible {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Disable page transition glitch */
+  .page-transition-effect::before {
+    animation: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* Disable nav scroll overlay */
+  body.is-nav-scrolling::after {
+    animation: none !important;
+    display: none !important;
+  }
+
+  /* Remove parallax fixed backgrounds (causes repaints) */
+  .parallax-section::before {
+    background-attachment: scroll !important;
+  }
+
+  /* Disable hover animations */
+  .cyber-button:hover {
+    transform: none !important;
+  }
+
+  .card-hover:hover {
+    transform: none !important;
+  }
+
+  .contact-card-button:hover {
+    transform: none !important;
+  }
+
+  /* Disable box-shadow glows on hover (GPU-heavy) */
+  .hover\:box-glow-primary:hover {
+    box-shadow: 0 0 5px hsl(var(--primary)) !important;
+  }
+
+  .box-glow-primary {
+    box-shadow: 0 0 5px hsl(var(--primary)) !important;
+  }
+
+  .box-glow-accent {
+    box-shadow: 0 0 5px hsl(var(--accent)) !important;
+  }
+
+  /* Reduce blur effects (GPU compositing heavy) */
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+  }
+
+  /* Disable flip card 3D */
+  .flip-card-flipper {
+    transition: none !important;
+  }
+
+  /* Neural dive overlay */
+  body.is-diving::after {
+    animation: none !important;
+    display: none !important;
+  }
 }
