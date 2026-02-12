@@ -42,14 +42,14 @@ export default function MemberCard({ member, index }: MemberCardProps) {
               />
             </div>
             <div className="flex-grow">
-              <h3 className="text-2xl font-bold text-foreground transition-colors group-hover/card:text-[var(--glow-color)]">{member.name}</h3>
-              <p className="font-semibold text-[var(--glow-color)]">{member.role}</p>
+              <h3 className="text-2xl font-headline font-bold tracking-wide text-foreground transition-colors group-hover/card:text-[var(--glow-color)]">{member.name}</h3>
+              <p className="font-code text-sm font-semibold tracking-cyber-wide text-[var(--glow-color)]">{member.role}</p>
             </div>
           </div>
 
           <div className="text-center bg-card/50 p-3 rounded-md border border-border">
-            <p className="text-sm uppercase tracking-widest text-muted-foreground">Avatar Name</p>
-            <p className="font-semibold text-lg text-foreground mt-1">{`"${member.specialAbility}"`}</p>
+            <p className="text-sm uppercase tracking-widest text-muted-foreground font-code">Avatar Name</p>
+            <p className="font-headline font-semibold text-lg text-foreground mt-1">{`"${member.specialAbility}"`}</p>
           </div>
 
           <p className="text-sm text-muted-foreground leading-relaxed text-justify flex-grow">

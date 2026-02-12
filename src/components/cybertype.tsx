@@ -103,7 +103,7 @@ setIsAnimating(false);
   }, [currentIndex, revealDelay, revealSpeed, loopDelay, texts]);
 
   return (
-    <p className={cn('font-code text-xl md:text-2xl text-accent text-glow-accent text-center h-16 flex items-center justify-center', className)}>
+    <p className={cn('font-code text-xl md:text-2xl text-accent text-glow-accent-strong text-center h-16 flex items-center justify-center tracking-cyber-tight', className)}>
       <span>{displayedText}</span>
       {isAnimating && <span className="terminal-caret-inline"></span>}
     </p>

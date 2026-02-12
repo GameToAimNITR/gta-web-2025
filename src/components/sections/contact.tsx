@@ -63,10 +63,10 @@ export default function ContactSection() {
         </div>
         <div className="terminal-body space-y-8">
           <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-glow-accent">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-glow-accent-strong uppercase tracking-cyber-wide">
               <Typewriter text="Get In Touch" speed={50} delay={isVisible ? 500 : 99999} />
             </h2>
-            <p className={cn("mt-4 text-lg text-muted-foreground animate-content-slide-in", { 'is-visible': isVisible })} style={{ animationDelay: '1.2s' }}>
+            <p className={cn("mt-4 text-lg font-headline text-muted-foreground animate-content-slide-in", { 'is-visible': isVisible })} style={{ animationDelay: '1.2s' }}>
               Ready to create the future? Connect with us.
             </p>
           </div>
@@ -76,8 +76,8 @@ export default function ContactSection() {
               <div className="flex items-center gap-3">
                 <User className="w-5 h-5 text-primary" />
                 <div>
-                  <span className="font-bold text-lg">{presidentInfo.name}</span>
-                  <span className="text-sm text-muted-foreground"> ({presidentInfo.role})</span>
+                  <span className="font-headline font-bold text-lg">{presidentInfo.name}</span>
+                  <span className="text-sm text-muted-foreground font-code"> ({presidentInfo.role})</span>
                 </div>
               </div>
                <div className="flex items-center gap-3">
@@ -95,13 +95,13 @@ export default function ContactSection() {
             <div className={cn("flex flex-col md:flex-row items-center gap-8 animate-content-slide-in", { 'is-visible': isVisible })} style={{ animationDelay: '1.8s' }}>
               <Link href={JOIN_US_FORM_URL} target="_blank" rel="noopener noreferrer" className="contact-card-button group">
                 <UserPlus className="w-12 h-12 text-accent transition-all duration-300 group-hover:scale-110" />
-                <span className="font-bold text-lg mt-2">Join Us</span>
-                <span className="text-sm text-muted-foreground mt-1">Become a member</span>
+                <span className="font-headline font-bold text-lg mt-2">Join Us</span>
+                <span className="text-sm text-muted-foreground mt-1 font-code">Become a member</span>
               </Link>
               <Link href={COLLABORATE_FORM_URL} target="_blank" rel="noopener noreferrer" className="contact-card-button group">
                 <Handshake className="w-12 h-12 text-accent transition-all duration-300 group-hover:scale-110" />
-                <span className="font-bold text-lg mt-2">Collaborate</span>
-                <span className="text-sm text-muted-foreground mt-1">Partner with us</span>
+                <span className="font-headline font-bold text-lg mt-2">Collaborate</span>
+                <span className="text-sm text-muted-foreground mt-1 font-code">Partner with us</span>
               </Link>
             </div>
             <div className={cn("flex items-center gap-6 animate-content-slide-in", { 'is-visible': isVisible })} style={{ animationDelay: '2.1s' }}>

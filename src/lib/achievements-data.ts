@@ -1,6 +1,4 @@
 
-import placeholderImages from '@/lib/placeholder-images.json';
-
 export interface Achievement {
   title: string;
   description: string;

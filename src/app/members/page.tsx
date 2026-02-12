@@ -8,17 +8,6 @@ import MemberCard from '@/components/member-card';
 import { members, years } from '@/lib/members';
 import type { Year } from '@/lib/members/types';
 import { cn } from '@/lib/utils';
-import type { Metadata } from 'next';
-
-// This metadata is not used because the page is client-rendered.
-// For SEO, this should be a server component or use generateMetadata.
-// export const metadata: Metadata = {
-//     title: 'Meet the Team',
-//     description: 'Meet the talented developers, artists, and designers of Game To Aim. See the students behind NIT Rourkela’s most innovative gaming projects.',
-//     alternates: {
-//         canonical: '/members',
-//     },
-// };
 
 export default function MembersPage() {
   const [activeFilter, setActiveFilter] = useState<Year | 'All'>('All');
@@ -68,8 +57,8 @@ export default function MembersPage() {
     <section id="members" ref={sectionRef} className="py-16 md:py-24 parallax-section">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold">Meet the Team</h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-cyber-wide text-glow-accent-strong cyber-heading">Meet the Team</h1>
+          <p className="mt-4 text-lg font-headline text-muted-foreground max-w-3xl mx-auto">
             The architects of our worlds. Meet the developers, artists, and designers of Game To Aim, the game development club of NIT Rourkela.
           </p>
         </div>

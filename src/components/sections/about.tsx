@@ -4,63 +4,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BrainCircuit, BookOpenText, Glasses, Users, Swords, FolderGit2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { members } from '@/lib/members';
 import { useState, useEffect, useRef } from 'react';
-
-const AnimatedCounter = ({ value }: { value: number }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry && entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const end = value;
-          if (end === 0) {
-            setCount(end);
-            return;
-          }
-          // Use 20 discrete steps instead of 60fps setInterval
-          const steps = 20;
-          const duration = 800;
-          const increment = end / steps;
-          const stepDuration = duration / steps;
-          let currentStep = 0;
-          let accumulated = 0;
-
-          const timer = setInterval(() => {
-            currentStep++;
-            accumulated += increment;
-            if (currentStep >= steps) {
-              setCount(end);
-              clearInterval(timer);
-            } else {
-              setCount(Math.ceil(accumulated));
-            }
-          }, stepDuration);
-
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if(currentRef) {
-        observer.unobserve(currentRef)
-      }
-    };
-  }, [value]);
-
-  return <span ref={ref}>{count.toLocaleString()}</span>;
-};
+import AnimatedCounter from '@/components/animated-counter';
 
 
 const focusAreas = [
@@ -123,7 +68,7 @@ export default function AboutSection() {
         <div className="text-center mb-12 md:mb-16">
           <h2
             className={cn(
-              'text-4xl md:text-5xl font-bold text-glow-accent animate-entry animate-slide-up-fade',
+              'text-4xl md:text-5xl font-display font-bold uppercase tracking-cyber-wide text-glow-accent-strong cyber-heading animate-entry animate-slide-up-fade',
               { 'is-visible': isVisible }
             )}
             style={{ animationDelay: '100ms' }}
@@ -132,7 +77,7 @@ export default function AboutSection() {
           </h2>
           <p
             className={cn(
-              'mt-4 text-lg text-muted-foreground max-w-3xl mx-auto animate-entry animate-slide-up-fade',
+              'mt-4 text-lg font-headline text-muted-foreground max-w-3xl mx-auto animate-entry animate-slide-up-fade',
               { 'is-visible': isVisible }
             )}
             style={{ animationDelay: '200ms' }}
@@ -154,11 +99,11 @@ export default function AboutSection() {
               {stats.map((stat, index) => (
                 <div key={index} className="flex flex-col items-center pt-6 md:pt-0">
                   {stat.icon}
-                  <p className="text-4xl font-bold font-display mt-2 text-primary">
+                  <p className="text-4xl font-bold font-display mt-2 text-primary text-glow-primary tracking-tight">
                     <AnimatedCounter value={parseInt(stat.value, 10)} />
                     {stat.value.endsWith('+') && '+'}
                   </p>
-                  <p className="text-muted-foreground mt-1">{stat.label}</p>
+                  <p className="text-muted-foreground mt-1 font-code text-sm tracking-cyber-wide uppercase">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -178,10 +123,10 @@ export default function AboutSection() {
               <Card className="bg-card border-primary/20 backdrop-blur-sm transition-all duration-300 hover:border-primary hover:scale-105 hover:box-glow-primary h-full">
                 <CardHeader className="items-center">
                   {area.icon}
-                  <CardTitle as="h3" className="mt-4 text-2xl font-semibold text-center">{area.title}</CardTitle>
+                  <CardTitle as="h3" className="mt-4 text-2xl font-bold text-center font-headline tracking-wide">{area.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground text-center">{area.description}</p>
+                  <p className="text-muted-foreground text-center leading-relaxed">{area.description}</p>
                 </CardContent>
               </Card>
             </div>

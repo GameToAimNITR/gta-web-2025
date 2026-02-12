@@ -54,6 +54,21 @@
   }
   body {
     @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* === CYBERPUNK TYPOGRAPHY BASE === */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-rajdhani), sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+
+  p {
+    line-height: 1.7;
   }
 
   /* Hide default cursor on interactive elements for custom cursor */
@@ -66,7 +81,6 @@
     select,
     .flip-card-container,
     .game-card-clickable,
-    .event-card-clickable,
     .holographic-card,
     .bio-id-scanner,
     .group {
@@ -87,6 +101,9 @@
   /* Nav Link Styling */
   .cyber-nav-link {
     @apply relative flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors hover:text-primary;
+    font-family: var(--font-rajdhani), sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     z-index: 1;
   }
 
@@ -139,6 +156,50 @@
   .text-glow-accent {
     text-shadow: 0 0 8px hsl(var(--accent) / 0.9);
   }
+  .text-glow-primary-strong {
+    text-shadow:
+      0 0 4px hsl(var(--primary) / 0.6),
+      0 0 12px hsl(var(--primary) / 0.4),
+      0 0 24px hsl(var(--primary) / 0.2);
+  }
+  .text-glow-accent-strong {
+    text-shadow:
+      0 0 4px hsl(var(--accent) / 0.6),
+      0 0 12px hsl(var(--accent) / 0.4),
+      0 0 24px hsl(var(--accent) / 0.2);
+  }
+
+  /* Neon gradient text */
+  .text-neon-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 50%,
+      hsl(var(--primary)) 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Cyberpunk section heading style — decorative bracket markers */
+  .cyber-heading {
+    position: relative;
+    display: inline-block;
+  }
+
+  .cyber-heading::before {
+    content: '//';
+    font-family: var(--font-share-tech-mono), monospace;
+    color: hsl(var(--accent) / 0.5);
+    font-size: 0.6em;
+    margin-right: 0.5em;
+    vertical-align: super;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
   .box-glow-primary {
     box-shadow:
       0 0 5px hsl(var(--primary)),
@@ -336,8 +397,9 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1.75rem;
-    font-family: var(--font-hacker);
+    font-family: var(--font-share-tech-mono), monospace;
     font-size: 1.125rem;
+    letter-spacing: 0.08em;
     font-weight: 700;
     color: hsl(var(--accent));
     background-color: hsl(var(--background));
@@ -898,8 +960,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-code);
+    font-family: var(--font-share-tech-mono), monospace;
     font-size: 1.5rem;
+    letter-spacing: 0.12em;
     text-shadow: 0 0 5px hsl(var(--accent));
     animation: neural-dive-glitch 2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
   }
@@ -1086,7 +1149,7 @@
     background-color: hsl(var(--background) / 0.7);
     backdrop-filter: blur(2px);
     z-index: 10000;
-    font-family: var(--font-hacker);
+    font-family: var(--font-share-tech-mono), monospace;
     color: hsl(var(--accent));
     opacity: 1;
     transition: opacity 1s ease-out;
@@ -1334,10 +1397,6 @@
   }
 
   /* Skip to content link for keyboard users */
-  .skip-to-content {
-    @apply absolute left-1/2 -translate-x-1/2 -top-full z-[100] bg-primary text-primary-foreground px-4 py-2 rounded-b-md;
-    @apply focus:top-0 transition-all;
-  }
 }
 
 /* Member Card Animation */

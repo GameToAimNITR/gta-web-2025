@@ -28,15 +28,6 @@ export default function ShowcaseSection() {
     setCurrentPage(newPage);
   };
   
-  const getIcon = (geometry: ModelInfo['fallback']['geometry']) => {
-    switch (geometry) {
-      case 'box':
-        return <Code className="w-5 h-5" />;
-      default:
-        return <Code className="w-5 h-5" />;
-    }
-  };
-
   const paginatedModels = models.slice(
     currentPage * ITEMS_PER_PAGE,
     (currentPage + 1) * ITEMS_PER_PAGE
@@ -46,8 +37,8 @@ export default function ShowcaseSection() {
     <section id="showcase" className="py-16 md:py-24 parallax-section">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-glow-accent">3D Asset Showcase</h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-glow-accent-strong uppercase tracking-cyber-wide cyber-heading">3D Asset Showcase</h2>
+          <p className="mt-4 text-lg font-headline text-muted-foreground max-w-3xl mx-auto">
           Disassemble. Discover. Decode. These are the core assets powering our digital realms.          </p>
         </div>
 
@@ -57,7 +48,7 @@ export default function ShowcaseSection() {
           </div>
 
           <div className="flex flex-col gap-4">
-             <h3 className="text-2xl font-bold text-primary">Select Asset</h3>
+             <h3 className="text-2xl font-headline font-bold text-primary tracking-wide uppercase">Select Asset</h3>
              <div className="space-y-4 h-[440px] relative overflow-hidden">
               {paginatedModels.map((model) => (
                 <div
@@ -74,11 +65,11 @@ export default function ShowcaseSection() {
                   >
                     <div className="flex items-start gap-4">
                       <div className="p-2 bg-card rounded-md mt-1">
-                          {getIcon(model.fallback.geometry)}
+                          <Code className="w-5 h-5" />
                       </div>
                       <div>
-                          <p className="font-bold text-lg text-accent">{model.name}</p>
-                          <p className="text-muted-foreground whitespace-normal text-sm">{model.description}</p>
+                          <p className="font-headline font-bold text-lg text-accent tracking-wide">{model.name}</p>
+                          <p className="text-muted-foreground whitespace-normal text-sm leading-relaxed">{model.description}</p>
                       </div>
                     </div>
                   </Button>
@@ -97,7 +88,7 @@ export default function ShowcaseSection() {
               >
                 <ArrowUp className="w-5 h-5" />
               </Button>
-              <span className="font-code text-muted-foreground">
+              <span className="font-code text-muted-foreground tracking-cyber-wide">
                 Page {currentPage + 1} of {totalPages}
               </span>
               <Button

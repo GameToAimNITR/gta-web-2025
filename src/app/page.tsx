@@ -17,11 +17,6 @@ const GamesSection = dynamic(() => import('@/components/sections/games'), {
   loading: () => <SectionSkeleton />,
 });
 
-// const ShowcaseSection = dynamic(() => import('@/components/sections/showcase'), {
-//   loading: () => <SectionSkeleton />,
-//   ssr: false,
-// });
-
 const AchievementsSection = dynamic(() => import('@/components/sections/achievements'), {
   loading: () => <SectionSkeleton />,
 });
@@ -45,10 +40,9 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <GamesSection />
-      {/* <ShowcaseSection /> */}
       <AchievementsSection />
       <ContactSection />
-      <section id="member-access" className="py-24">
+      <section id="member-access" className="py-24 min-h-[60vh]">
         <div className="container mx-auto px-4">
           <BioIDTerminal />
         </div>

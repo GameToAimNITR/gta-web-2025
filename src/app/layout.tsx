@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Space_Grotesk, Orbitron, VT323 } from 'next/font/google';
+import { Space_Grotesk, Orbitron, Share_Tech_Mono, Rajdhani } from 'next/font/google';
 import './globals.css';
 import { RootProviders } from '@/components/root-providers';
 import { Analytics } from '@vercel/analytics/react';
@@ -21,18 +21,24 @@ const orbitron = Orbitron({
   fallback: ['system-ui', 'arial'],
 });
 
-const vt323 = VT323({
+const shareTechMono = Share_Tech_Mono({
   subsets: ['latin'],
   weight: '400',
   display: 'swap',
-  variable: '--font-vt323',
-  preload: false, // Less critical font
+  variable: '--font-share-tech-mono',
+  preload: false,
   fallback: ['monospace'],
 });
 
-const title = 'Game To Aim | NIT Rourkela Game Development Club';
-const description =
-  'The official website for Game To Aim (GTA), the game development club of NIT Rourkela. Explore our student-made games, 3D models, and join our community of creators.';
+const rajdhani = Rajdhani({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-rajdhani',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
+});
+
 const url = 'https://game-to-aim-cyber.web.app';
 
 export const metadata: Metadata = {
@@ -104,7 +110,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${orbitron.variable} ${vt323.variable} dark`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${orbitron.variable} ${shareTechMono.variable} ${rajdhani.variable} dark`}>
       <body className="font-body antialiased">
         <RootProviders>{children}</RootProviders>
         <Analytics />

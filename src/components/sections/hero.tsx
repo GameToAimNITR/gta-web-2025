@@ -50,7 +50,7 @@ export default function HeroSection() {
           className={'animate-entry animate-slide-in-top is-visible'}
         >
           <h1
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider text-glow-primary glitch-layers"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-cyber-ultra uppercase text-glow-primary-strong glitch-layers"
             data-text="GAME TO AIM"
           >
             GAME TO AIM
@@ -104,7 +104,7 @@ export default function HeroSection() {
             className={'animate-entry animate-fade-in is-visible'}
             style={{ animationDelay: '500ms' }}
           >
-            <p className="text-sm text-muted-foreground font-code mt-4">
+            <p className="text-sm text-muted-foreground font-code mt-4 tracking-cyber-wide">
               Hover or click to navigate the digital frontier.
             </p>
           </div>

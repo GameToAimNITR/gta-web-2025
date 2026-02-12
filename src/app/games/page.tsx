@@ -76,10 +76,10 @@ export default function GamesArchivePage() {
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Home</span>
             </Link>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-glow-accent mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-glow-accent-strong uppercase tracking-cyber-wide cyber-heading mb-4">
               Complete Game Archives
             </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl">
+            <p className="text-lg font-headline text-muted-foreground max-w-3xl">
               Explore our full collection of student-made games. Click on any project to learn more about the team and gameplay.
             </p>
           </div>
@@ -166,7 +166,7 @@ export default function GamesArchivePage() {
                   {/* Header */}
                   <div className="flex-shrink-0 bg-card/80 border-b border-primary/30 px-4 md:px-6 py-4">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-2xl md:text-3xl font-bold text-primary tracking-wide">
+                      <h2 className="text-2xl md:text-3xl font-display font-bold text-primary tracking-cyber-wide uppercase text-glow-primary">
                         {selectedGame.title}
                       </h2>
                       <button
@@ -232,7 +232,7 @@ export default function GamesArchivePage() {
                             <div className="cyber-section-box-content">
                               <div className="flex items-center gap-2 mb-2">
                                 <Terminal className="w-4 h-4 text-accent" />
-                                <span className="text-accent font-mono text-[10px] uppercase tracking-[0.2em]">// MISSION_BRIEF</span>
+                                <span className="text-accent font-code text-[10px] uppercase tracking-[0.2em]">// MISSION_BRIEF</span>
                               </div>
                               <p className="text-sm text-muted-foreground leading-relaxed">
                                 {selectedGame.longDescription || selectedGame.description}
@@ -266,7 +266,7 @@ export default function GamesArchivePage() {
                             <div className="cyber-section-box-content">
                               <div className="flex items-center gap-2 mb-3">
                                 <Users className="w-4 h-4 text-primary" />
-                                <span className="text-primary font-mono text-[10px] uppercase tracking-[0.2em]">// DEV_TEAM</span>
+                                <span className="text-primary font-code text-[10px] uppercase tracking-[0.2em]">// DEV_TEAM</span>
                               </div>
                               <div className="flex flex-wrap gap-2">
                                 {selectedGame.developers.map((dev, i) => (
@@ -293,7 +293,7 @@ export default function GamesArchivePage() {
                             <div className="cyber-section-box-content">
                               <div className="flex items-center gap-2 mb-3">
                                 <Code className="w-4 h-4 text-accent" />
-                                <span className="text-accent font-mono text-[10px] uppercase tracking-[0.2em]">// TECH_STACK</span>
+                                <span className="text-accent font-code text-[10px] uppercase tracking-[0.2em]">// TECH_STACK</span>
                               </div>
                               <div className="flex flex-wrap gap-2">
                                 {selectedGame.techStack.map((tech) => (
@@ -319,7 +319,7 @@ export default function GamesArchivePage() {
 
                   {/* Footer Bar */}
                   <div className="flex-shrink-0 bg-card/80 border-t border-primary/30 px-4 md:px-6 py-2">
-                    <div className="flex items-center justify-between text-xs font-mono text-muted-foreground">
+                    <div className="flex items-center justify-between text-xs font-code text-muted-foreground tracking-cyber-wide">
                       <span className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-accent rounded-full" />
                         GAME_TO_AIM // NIT ROURKELA

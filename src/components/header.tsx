@@ -12,7 +12,6 @@ import {
 import {
   Menu,
   Joystick,
-  Component,
   Trophy,
   Users,
   Send,
@@ -34,8 +33,8 @@ const navLinks: NavLink[] = [
   { href: '/#about', label: 'About', Icon: Info },
   { href: '/#games', label: 'Games', Icon: Joystick },
   { href: '/#achievements', label: 'Achievements', Icon: Trophy },
-  { href: '/#member-access', label: 'Members', Icon: Users },
   { href: '/#contact', label: 'Contact', Icon: Send },
+  { href: '/#member-access', label: 'Members', Icon: Users },
 ];
 
 export default function Header() {
@@ -73,19 +72,29 @@ export default function Header() {
     }
 
     const handleScroll = () => {
-        const scrollPosition = (lenis?.scroll || 0) + window.innerHeight / 2;
-        let currentSectionId = '';
-
         const sections = navLinks
           .map(link => link.href.startsWith('/#') ? document.getElementById(link.href.substring(2)) : null)
           .filter(Boolean) as HTMLElement[];
 
+        if (sections.length === 0) return;
+
+        let currentSectionId = '';
+
+        // Use getBoundingClientRect for accurate visual position detection
+        // A section is "active" when its top has scrolled above 40% of the viewport
+        const threshold = window.innerHeight * 0.4;
         for (const section of sections) {
-            if (section.offsetTop <= scrollPosition) {
-                currentSectionId = '/#' + section.id;
-            }
+          if (section.getBoundingClientRect().top <= threshold) {
+            currentSectionId = '/#' + section.id;
+          }
         }
-        
+
+        // When scrolled near the bottom of the page, always highlight the last section
+        const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 100);
+        if (atBottom) {
+          currentSectionId = '/#' + sections[sections.length - 1]!.id;
+        }
+
         setActiveLink(currentSectionId);
     };
 
@@ -141,7 +150,7 @@ export default function Header() {
             finalIsActive ? 'text-primary' : 'text-muted-foreground'
           )} />
           <span className={cn(
-            "text-lg font-semibold transition-colors",
+            "text-lg font-headline font-semibold transition-colors tracking-wide",
             finalIsActive ? 'text-primary' : 'text-foreground'
           )}>{label}</span>
         </Link>
@@ -175,7 +184,7 @@ export default function Header() {
               width={40}
               height={40}
             />
-            <span className="font-bold text-lg tracking-wider">
+            <span className="font-display font-bold text-lg tracking-cyber-wide text-neon-gradient">
               GAME TO AIM
             </span>
           </Link>
@@ -204,9 +213,9 @@ export default function Header() {
                       width={32}
                       height={32}
                     />
-                    <span className="font-bold text-lg tracking-wider">GAME TO AIM</span>
+                    <span className="font-display font-bold text-lg tracking-cyber-wide text-neon-gradient">GAME TO AIM</span>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-2">Navigation Menu</p>
+                  <p className="text-sm text-muted-foreground mt-2 font-code tracking-cyber-wide">Navigation Menu</p>
                 </div>
                 <nav className="flex-1 space-y-2 pt-2">
                   {navLinks.map((link, index) => (

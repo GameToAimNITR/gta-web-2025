@@ -7,7 +7,7 @@ import type { Game } from '@/lib/games-data';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { games } from '@/lib/games-data';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 interface GameCardProps {
   game: Game;
@@ -86,10 +86,10 @@ export default function GameCard({ game, isVisible, index, onMouseEnter, onClick
           </div>
         </CardHeader>
         <CardContent className="p-4 flex-1 flex flex-col justify-center">
-            <h3 className="font-bold text-lg md:text-xl text-primary text-glow-primary transition-all duration-150 group-hover:text-accent">
+            <h3 className="font-headline font-bold text-lg md:text-xl tracking-wide text-primary text-glow-primary transition-all duration-150 group-hover:text-accent">
                 {game.title}
             </h3>
-            <p className="text-muted-foreground mt-2 text-sm">
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 {game.description}
             </p>
         </CardContent>

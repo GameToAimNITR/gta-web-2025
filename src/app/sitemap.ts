@@ -1,6 +1,4 @@
 import { MetadataRoute } from 'next'
-import { games } from '@/lib/games-data';
-import { members } from '@/lib/members';
  
 const URL = 'https://game-to-aim-cyber.web.app';
 

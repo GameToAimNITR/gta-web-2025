@@ -2,70 +2,17 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Trophy } from 'lucide-react';
 import type { Achievement } from '@/lib/achievements-data';
+import AnimatedCounter from '@/components/animated-counter';
 
 interface AchievementCardProps {
   achievement: Achievement;
   onCardClick: (achievement: Achievement) => void;
 }
-
-const AnimatedCounter = ({ value }: { value: number }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry && entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          let start = 0;
-          const end = value;
-          if (start === end) {
-            setCount(end);
-            return;
-          }
-          const duration = 800; // Reduced from 1000ms
-          const steps = 20; // Reduced from continuous updates
-          const increment = end / steps;
-          const stepDuration = duration / steps;
-          
-          let currentStep = 0;
-          const timer = setInterval(() => {
-            currentStep++;
-            start += increment;
-            if (currentStep >= steps) {
-              setCount(end);
-              clearInterval(timer);
-            } else {
-              setCount(Math.ceil(start));
-            }
-          }, stepDuration);
-          
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if(currentRef) {
-        observer.unobserve(currentRef)
-      }
-    };
-  }, [value]);
-
-  return <span ref={ref}>{count.toLocaleString()}</span>;
-};
 
 
 export default function AchievementCard({ achievement, onCardClick }: AchievementCardProps) {
@@ -117,14 +64,14 @@ export default function AchievementCard({ achievement, onCardClick }: Achievemen
           </div>
         </CardHeader>
         <CardContent className="p-6 flex flex-col flex-grow bg-card">
-          <CardTitle className="text-xl font-bold group-hover:text-accent transition-all">
+          <CardTitle className="text-xl font-headline font-bold tracking-wide group-hover:text-accent transition-all">
             {achievement.title}
           </CardTitle>
-          <CardDescription className="mt-2 text-muted-foreground flex-grow">
+          <CardDescription className="mt-2 text-muted-foreground leading-relaxed">
             {achievement.description}
           </CardDescription>
           <div className="mt-4">
-            <div className="flex justify-between items-center mb-1 text-xs text-muted-foreground font-code">
+            <div className="flex justify-between items-center mb-1 text-xs text-muted-foreground font-code tracking-cyber-wide">
               <span>Progress</span>
               <span>{isHovered ? achievement.progress : 0}%</span>
             </div>

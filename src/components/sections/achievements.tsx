@@ -71,10 +71,10 @@ export default function AchievementsSection() {
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
         <div className="container mx-auto px-4 md:px-16 pt-16 md:pt-24 relative z-10">
           <div className="text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-glow-accent tracking-wider uppercase">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-glow-accent-strong tracking-cyber-wide uppercase cyber-heading">
               Hall of Fame
             </h2>
-            <p className="mt-4 font-code text-lg text-foreground/80 max-w-3xl mx-auto">
+            <p className="mt-4 font-code text-lg text-foreground/80 max-w-3xl mx-auto tracking-cyber-tight">
             Achievements unlocked! Here’s where our XP, trophies, and epic moments live on.
             </p>
           </div>
